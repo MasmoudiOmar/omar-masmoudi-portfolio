@@ -16,17 +16,17 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({ onComplete }) => {
   const outputLines = [
     { text: '$ bun run start', type: 'command' as const, delay: 0 },
     { text: '', type: 'output' as const, delay: 100 },
-    { text: '🔍 Resolving dependencies...', type: 'info' as const, delay: 300 },
-    { text: '📦 Loading modules...', type: 'info' as const, delay: 600 },
-    { text: '⚡ Compiling TypeScript...', type: 'info' as const, delay: 900 },
-    { text: '🎨 Building styles...', type: 'info' as const, delay: 1200 },
+    { text: '➜  Resolving dependencies...', type: 'info' as const, delay: 300 },
+    { text: '➜  Loading modules...', type: 'info' as const, delay: 600 },
+    { text: '➜  Compiling TypeScript...', type: 'info' as const, delay: 900 },
+    { text: '➜  Building styles...', type: 'info' as const, delay: 1200 },
     { text: '', type: 'output' as const, delay: 1400 },
     { text: '✓ Ready in 847ms', type: 'success' as const, delay: 1600 },
     { text: '', type: 'output' as const, delay: 1700 },
-    { text: '➜ Local:   http://localhost:3000', type: 'output' as const, delay: 1900 },
-    { text: '➜ Network: http://192.168.1.42:3000', type: 'output' as const, delay: 2000 },
+    { text: '➜  Local:   http://localhost:3000', type: 'output' as const, delay: 1900 },
+    { text: '➜  Network: http://192.168.1.42:3000', type: 'output' as const, delay: 2000 },
     { text: '', type: 'output' as const, delay: 2100 },
-    { text: '🚀 Launching portfolio...', type: 'success' as const, delay: 2300 },
+    { text: '➜  Launching portfolio...', type: 'success' as const, delay: 2300 },
   ];
 
   // Cursor blink effect
