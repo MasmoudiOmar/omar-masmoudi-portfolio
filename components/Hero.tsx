@@ -448,7 +448,7 @@ const Hero: React.FC = () => {
               GitHub
             </a>
             <a 
-              href="/resume.pdf" 
+              href="/Omar%20Masmoudi.pdf" 
               download
               aria-label="Download Resume"
               className="bg-accent hover:bg-accent/90 hover:scale-105 text-slate-900 px-6 py-3 rounded-xl font-medium transition-all flex items-center gap-2"
