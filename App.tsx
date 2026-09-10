@@ -6,12 +6,18 @@ import Projects from './components/Projects';
 import Education from './components/Education';
 import TerminalLoader from './components/TerminalLoader';
 import ChatInterface from './components/ChatInterface';
+import ProjectShowcase from './components/ProjectShowcase';
 import { RESUME } from './constants';
 import { Menu, X, Mail, Linkedin, Github, ArrowUp } from 'lucide-react';
 
+const readRoute = () =>
+  window.location.hash.startsWith('#/') ? window.location.hash.slice(2) : '';
+
 const App: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [showContent, setShowContent] = useState(false);
+  const [route, setRoute] = useState(readRoute);
+  // Deep-linking straight to a case study should not sit through the loader.
+  const [isLoading, setIsLoading] = useState(() => readRoute() === '');
+  const [showContent, setShowContent] = useState(() => readRoute() !== '');
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('about');
@@ -23,6 +29,36 @@ const App: React.FC = () => {
     // Small delay before showing content for smooth transition
     setTimeout(() => setShowContent(true), 100);
   };
+
+  useEffect(() => {
+    const onHashChange = () => setRoute(readRoute());
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
+
+  /**
+   * Position the page after a route change.
+   *
+   * Leaving a case study restores a section anchor like #projects, but the main
+   * page has not mounted at the moment the hash changes — so the browser has no
+   * element to scroll to and falls back to its own scroll restoration, landing
+   * somewhere arbitrary. Scrolling on the next frame, once the section exists,
+   * puts it where the anchor actually points.
+   */
+  useEffect(() => {
+    if (route) {
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    const anchor = window.location.hash.slice(1);
+    if (!anchor || anchor.startsWith('/')) return;
+
+    const frame = requestAnimationFrame(() => {
+      document.getElementById(anchor)?.scrollIntoView();
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [route]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -66,9 +102,11 @@ const App: React.FC = () => {
     };
   }, []);
 
-  // Intersection Observer for section reveal animations - only run after content is shown
+  // Intersection Observer for section reveal animations - only run after content is shown.
+  // Also re-runs when leaving a case study, because returning remounts every
+  // .reveal-section and the previous observer was watching the old nodes.
   useEffect(() => {
-    if (!showContent) return;
+    if (!showContent || route) return;
     
     const observer = new IntersectionObserver(
       (entries) => {
@@ -86,7 +124,7 @@ const App: React.FC = () => {
     });
 
     return () => observer.disconnect();
-  }, [showContent]);
+  }, [showContent, route]);
 
   const navLinks = [
     { name: 'About', href: '#about', id: 'about' },
@@ -97,6 +135,24 @@ const App: React.FC = () => {
   ];
 
   // Show terminal loader first
+  // A matching route replaces the whole page with that project's case study.
+  const routedProject = route
+    ? RESUME.projects.find((project) => project.showcase?.slug === route)
+    : undefined;
+
+  if (routedProject?.showcase) {
+    return (
+      <ProjectShowcase
+        name={routedProject.name}
+        showcase={routedProject.showcase}
+        onBack={() => {
+          // Land back on the Projects section rather than the top of the page.
+          window.location.hash = '#projects';
+        }}
+      />
+    );
+  }
+
   if (isLoading) {
     return <TerminalLoader onComplete={handleLoadComplete} />;
   }

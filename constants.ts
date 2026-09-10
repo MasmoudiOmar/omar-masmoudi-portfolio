@@ -127,7 +127,72 @@ export const RESUME: ResumeData = {
   projects: [
     {
       name: "Solvizor",
-      description: "AI-powered crypto portfolio analysis with a natural-language chat interface over 20+ wallet-analysis tools."
+      description: "AI-powered crypto portfolio analysis with a natural-language chat interface over 20+ wallet-analysis tools.",
+      preview: {
+        mp4: "/media/solvizor/chat.mp4",
+        webm: "/media/solvizor/chat.webm",
+        poster: "/media/solvizor/chat.jpg"
+      },
+      showcase: {
+        slug: "solvizor",
+        tagline: "Ask a question, get a wallet analysed.",
+        overview: [
+          "Solvizor turned Solana wallet analysis into a conversation. Instead of reading block explorers, you asked a question in plain English and an AI agent picked the right tools to answer it — portfolio breakdowns, profit and loss across swaps, token discovery, whale tracking.",
+          "I co-founded it and owned the full stack: the ingestion pipeline that pulled and parsed on-chain history, the model-orchestration layer that routed questions to the right tools, and the frontend that made all of it feel immediate."
+        ],
+        role: "Full Stack Software Engineer & Co-Founder",
+        period: "Jan 2025 – Dec 2025",
+        status: "The product has wound down and the source is private, so there is no live demo. Everything below is recorded from the working application.",
+        stack: [
+          { group: "Frontend", items: ["Next.js 15", "React", "TypeScript", "Tailwind CSS", "shadcn/ui"] },
+          { group: "Backend", items: ["Node.js", "Drizzle ORM", "Auth.js", "REST"] },
+          { group: "Data", items: ["PostgreSQL", "MongoDB", "Redis", "Kafka"] },
+          { group: "AI", items: ["OpenRouter", "Vercel AI SDK", "Tool calling"] },
+          { group: "Chain", items: ["Helius", "Birdeye", "Moralis", "Shyft"] }
+        ],
+        metrics: [
+          { value: "5k+", label: "Active users" },
+          { value: "20+", label: "Wallet-analysis tools" },
+          { value: "50M+", label: "Token swaps processed" },
+          { value: "95%", label: "Faster transaction parsing" }
+        ],
+        features: [
+          {
+            title: "Conversational wallet analysis",
+            description: "A chat agent with 20+ tools at its disposal. It decided which to call from a plain-English question, then composed the results into an answer. A model-orchestration layer on OpenRouter handled automatic fallback, so a single provider outage never took the assistant down.",
+            media: {
+              mp4: "/media/solvizor/chat.mp4",
+              webm: "/media/solvizor/chat.webm",
+              poster: "/media/solvizor/chat.jpg"
+            }
+          },
+          {
+            title: "Real-time whales feed",
+            description: "A live stream of large trades as they landed on-chain, each enriched with token metadata and USD value. This is the ingestion pipeline surfacing: raw signatures fetched in batches, parsed into structured swaps, and priced — all asynchronously, so the feed stayed responsive while history backfilled.",
+            media: {
+              mp4: "/media/solvizor/feed.mp4",
+              webm: "/media/solvizor/feed.webm",
+              poster: "/media/solvizor/feed.jpg"
+            }
+          },
+          {
+            title: "Wallet tracking and alerts",
+            description: "Follow any Solana address, name it, and get notified when it moves. Registering a wallet triggered a historical backfill through the job queue while live webhooks handled everything from that point forward.",
+            media: {
+              mp4: "/media/solvizor/wallet.mp4",
+              webm: "/media/solvizor/wallet.webm",
+              poster: "/media/solvizor/wallet.jpg"
+            }
+          }
+        ],
+        pipeline: [
+          { label: "On-chain sources", detail: "Helius webhooks and RPC stream raw Solana signatures and transactions." },
+          { label: "Queues", detail: "Redis and Kafka buffer the firehose so ingestion never blocks the request path." },
+          { label: "Workers", detail: "Node.js workers fetch signatures in batches, parse transactions, and update prices." },
+          { label: "Store", detail: "Parsed swaps land in PostgreSQL with full, auditable history; chat and content live in MongoDB." },
+          { label: "AI layer", detail: "The agent queries that store through 20+ tools, with model fallback via OpenRouter." }
+        ]
+      }
     },
     {
       name: "Learna",
