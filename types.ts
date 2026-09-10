@@ -1,5 +1,7 @@
 export interface ExperienceItem {
   company: string;
+  /** Public URL for the company/product, when there is one. */
+  link?: string;
   role: string;
   period: string;
   location: string;
@@ -28,6 +30,7 @@ export interface SkillCategory {
 export interface ResumeData {
   personal: {
     name: string;
+    title: string;
     email: string;
     phone: string;
     location: string;

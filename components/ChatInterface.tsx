@@ -29,11 +29,7 @@ const ChatInterface: React.FC = () => {
     setIsLoading(true);
 
     try {
-      // Format history for the API
-      const history = messages.map(m => ({
-        role: m.role,
-        parts: [{ text: m.text }]
-      }));
+      const history = messages.map(m => ({ role: m.role, text: m.text }));
 
       const responseText = await sendChatMessage(userMessage, history);
       
@@ -61,7 +57,7 @@ const ChatInterface: React.FC = () => {
           glass-panel rounded-2xl shadow-2xl overflow-hidden
           transition-all duration-300 ease-in-out origin-bottom-right
           flex flex-col
-          ${isOpen ? 'w-[350px] sm:w-[400px] h-[500px] opacity-100 scale-100 mb-4' : 'w-0 h-0 opacity-0 scale-50'}
+          ${isOpen ? 'w-[350px] sm:w-[400px] h-[500px] max-h-[calc(100vh-7rem)] opacity-100 scale-100 mb-4' : 'w-0 h-0 opacity-0 scale-50'}
         `}
       >
         {/* Header */}

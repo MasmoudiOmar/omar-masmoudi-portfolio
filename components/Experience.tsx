@@ -1,6 +1,6 @@
 import React from 'react';
 import { RESUME } from '../constants';
-import { Calendar, MapPin } from 'lucide-react';
+import { Calendar, MapPin, ExternalLink } from 'lucide-react';
 
 const Experience: React.FC = () => {
   return (
@@ -28,12 +28,29 @@ const Experience: React.FC = () => {
                 <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
                   <div>
                     <h3 className="text-xl font-bold text-white group-hover:text-accent transition-colors">{exp.role}</h3>
-                    <div className="text-lg text-primary font-medium">{exp.company}</div>
+                    {exp.link ? (
+                      <a
+                        href={exp.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 text-lg text-primary font-medium hover:text-accent transition-colors"
+                      >
+                        {exp.company}
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    ) : (
+                      <div className="text-lg text-primary font-medium">{exp.company}</div>
+                    )}
                   </div>
                   <div className="flex flex-col items-start md:items-end text-sm text-slate-400 gap-1">
                     <div className="flex items-center gap-2">
                        <Calendar className="w-4 h-4" />
                        {exp.period}
+                       {exp.period.includes('Present') && (
+                         <span className="ml-1 px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 text-xs font-medium">
+                           Current
+                         </span>
+                       )}
                     </div>
                     <div className="flex items-center gap-2">
                        <MapPin className="w-4 h-4" />

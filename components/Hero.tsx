@@ -117,7 +117,7 @@ const Hero: React.FC = () => {
       { type: 'property', value: 'role' },
       { type: 'punctuation', value: ':' },
       { type: 'plain', value: ' ' },
-      { type: 'string', value: '"Full-Stack Software Engineer"' },
+      { type: 'string', value: `"${personal.title}"` },
       { type: 'punctuation', value: ',' }
     ]},
     { indent: 1, tokens: [
@@ -175,11 +175,11 @@ const Hero: React.FC = () => {
       { type: 'punctuation', value: ',' }
     ]},
     { indent: 2, tokens: [
-      { type: 'string', value: '"Scalable Systems"' },
+      { type: 'string', value: '"Scalable Data Pipelines"' },
       { type: 'punctuation', value: ',' }
     ]},
     { indent: 2, tokens: [
-      { type: 'string', value: '"Beautiful UIs"' }
+      { type: 'string', value: '"End-to-End Ownership"' }
     ]},
     { indent: 1, tokens: [
       { type: 'punctuation', value: ']' }
@@ -191,7 +191,7 @@ const Hero: React.FC = () => {
     { indent: 0, tokens: [
       { type: 'comment', value: "// Let's build something amazing together! 🚀" }
     ]},
-  ], [personal.name]);
+  ], [personal.name, personal.title]);
 
   // Define the projects code to be typed out with syntax tokens
   const projectsCodeLines: CodeLine[] = useMemo(() => [
@@ -448,8 +448,8 @@ const Hero: React.FC = () => {
               GitHub
             </a>
             <a 
-              href="/Omar%20Masmoudi.pdf" 
-              download
+              href="/omar-masmoudi-cv.pdf"
+              download="Omar-Masmoudi-CV.pdf"
               aria-label="Download Resume"
               className="bg-accent hover:bg-accent/90 hover:scale-105 text-slate-900 px-6 py-3 rounded-xl font-medium transition-all flex items-center gap-2"
             >
