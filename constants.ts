@@ -24,7 +24,6 @@ export const RESUME: ResumeData = {
     },
     {
       company: "Solvizor",
-      link: "https://app.solvizor.com",
       role: "Full Stack Software Engineer & Co-Founder",
       period: "Jan 2025 – Dec 2025",
       location: "Hybrid",
@@ -128,7 +127,6 @@ export const RESUME: ResumeData = {
   projects: [
     {
       name: "Solvizor",
-      link: "https://app.solvizor.com",
       description: "AI-powered crypto portfolio analysis with a natural-language chat interface over 20+ wallet-analysis tools."
     },
     {

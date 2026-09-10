@@ -1,6 +1,6 @@
 import React from 'react';
 import { RESUME } from '../constants';
-import { ExternalLink, ArrowRight, Sparkles, Globe } from 'lucide-react';
+import { ExternalLink, ArrowRight, Lock, Sparkles, Globe } from 'lucide-react';
 
 // Project preview images/gradients
 const projectStyles: Record<string, { gradient: string; icon: React.ReactNode }> = {
@@ -55,16 +55,18 @@ const Projects: React.FC = () => {
                   {/* Hover overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60"></div>
                   
-                  {/* External link button */}
-                  <a 
-                    href={project.link} 
-                    target="_blank" 
-                    rel="noreferrer"
-                    aria-label={`Visit ${project.name}`}
-                    className="absolute top-4 right-4 p-2.5 bg-black/30 backdrop-blur-sm rounded-full text-white/60 hover:text-white hover:bg-black/50 transition-all hover:scale-110"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
+                  {/* External link button, only when there is a live URL */}
+                  {project.link && (
+                    <a 
+                      href={project.link} 
+                      target="_blank" 
+                      rel="noreferrer"
+                      aria-label={`Visit ${project.name}`}
+                      className="absolute top-4 right-4 p-2.5 bg-black/30 backdrop-blur-sm rounded-full text-white/60 hover:text-white hover:bg-black/50 transition-all hover:scale-110"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  )}
                 </div>
                 
                 {/* Content */}
@@ -77,15 +79,22 @@ const Projects: React.FC = () => {
                     {project.description}
                   </p>
 
-                  <a 
-                    href={project.link} 
-                    target="_blank" 
-                    rel="noreferrer" 
-                    className="inline-flex items-center gap-2 text-primary font-medium text-sm group-hover:gap-3 transition-all"
-                  >
-                    View Project 
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </a>
+                  {project.link ? (
+                    <a 
+                      href={project.link} 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      className="inline-flex items-center gap-2 text-primary font-medium text-sm group-hover:gap-3 transition-all"
+                    >
+                      View Project 
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </a>
+                  ) : (
+                    <span className="inline-flex items-center gap-2 text-slate-500 font-medium text-sm">
+                      <Lock className="w-4 h-4" />
+                      Private source — case study coming
+                    </span>
+                  )}
                 </div>
               </div>
             );
