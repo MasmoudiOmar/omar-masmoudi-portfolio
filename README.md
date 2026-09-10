@@ -49,7 +49,7 @@ Then add the API key as an **encrypted** environment variable, so it stays out
 of the build output:
 
 ```bash
-npx wrangler pages secret put GEMINI_API_KEY
+npx wrangler pages secret put GEMINI_API_KEY --project-name om-portfolio
 ```
 
 Or in the dashboard: **Workers & Pages → your project → Settings → Variables and
