@@ -1,36 +1,56 @@
 import React from 'react';
 import { RESUME } from '../constants';
-import { Code, Layers, Database, Cloud, Wrench } from 'lucide-react';
+import { Code, Database, Cloud, Layout, Server, Sparkles } from 'lucide-react';
 
 // Skill icon mapping for Simple Icons CDN
 const skillIcons: Record<string, string> = {
+  // Languages
   'JavaScript': 'javascript',
   'TypeScript': 'typescript',
   'Java': 'openjdk',
   'SQL': 'mysql',
+  // Frontend
   'Next.js': 'nextdotjs',
-  'Angular': 'angular',
-  'Spring Boot': 'springboot',
   'React': 'react',
-  'MongoDB': 'mongodb',
+  'Angular': 'angular',
+  'Tailwind CSS': 'tailwindcss',
+  'shadcn/ui': 'shadcnui',
+  'daisyUI': 'daisyui',
+  'Angular Material': 'angular',
+  'RxJS': 'reactivex',
+  'TanStack Query': 'reactquery',
+  // Backend
+  'Node.js': 'nodedotjs',
+  'Spring Boot': 'springboot',
+  'tRPC': 'trpc',
+  'OAuth2/JWT': 'jsonwebtokens',
+  'Spring Data JPA': 'spring',
+  // Databases
   'PostgreSQL': 'postgresql',
   'MySQL': 'mysql',
+  'MongoDB': 'mongodb',
   'Redis': 'redis',
+  // AI & Integrations
+  'Stripe': 'stripe',
+  'OAuth2': 'auth0',
+  // DevOps & Tools
   'Docker': 'docker',
   'Kubernetes': 'kubernetes',
   'AWS': 'amazonaws',
   'Vercel': 'vercel',
   'GitHub Actions': 'githubactions',
   'Git': 'git',
+  'Maven': 'apachemaven',
 };
 
 // Category icons
 const categoryIcons: Record<string, React.ReactNode> = {
   'Languages': <Code className="w-5 h-5" />,
-  'Frameworks': <Layers className="w-5 h-5" />,
+  'Frontend': <Layout className="w-5 h-5" />,
+  'Backend': <Server className="w-5 h-5" />,
   'Databases': <Database className="w-5 h-5" />,
-  'DevOps': <Cloud className="w-5 h-5" />,
-  'Tools': <Wrench className="w-5 h-5" />,
+  'AI & Integrations': <Sparkles className="w-5 h-5" />,
+  'DevOps & Tools': <Cloud className="w-5 h-5" />,
 };
 
 const Skills: React.FC = () => {

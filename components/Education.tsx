@@ -25,7 +25,9 @@ const Education: React.FC = () => {
                    <h3 className="text-lg font-bold text-white group-hover:text-accent transition-colors">{edu.school}</h3>
                    <p className="text-accent text-sm mb-1">{edu.degree}</p>
                    <p className="text-slate-400 text-xs mb-2">{edu.period} | {edu.location}</p>
-                   <p className="text-slate-500 text-sm italic">{edu.details}</p>
+                   {edu.details && (
+                     <p className="text-slate-500 text-sm italic">{edu.details}</p>
+                   )}
                 </div>
              </div>
           ))}
