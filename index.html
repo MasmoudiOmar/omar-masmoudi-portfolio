@@ -39,9 +39,14 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+      /* `overflow-x: clip` rather than `hidden`: `hidden` would pair with the
+         default `overflow-y: visible` to compute as `auto`, turning these into
+         their own scroll containers. Anything overflowing (e.g. a decorative
+         transform on a fixed element) would then raise a second scrollbar
+         alongside the document's. `clip` crops without scrolling. */
       html { 
         scroll-behavior: smooth; 
-        overflow-x: hidden;
+        overflow-x: clip;
       }
       
       /* Offset anchor jumps so the fixed nav doesn't cover section headings */
@@ -50,7 +55,7 @@
         font-family: 'Outfit', sans-serif; 
         background-color: #0f172a; 
         color: #f8fafc;
-        overflow-x: hidden;
+        overflow-x: clip;
       }
       
       /* Grain texture overlay */
