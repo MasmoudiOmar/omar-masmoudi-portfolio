@@ -5,7 +5,9 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Education from './components/Education';
 import TerminalLoader from './components/TerminalLoader';
-import { Menu, X } from 'lucide-react';
+import ChatInterface from './components/ChatInterface';
+import { RESUME } from './constants';
+import { Menu, X, Mail, Linkedin, Github, ArrowUp } from 'lucide-react';
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -194,10 +196,59 @@ const App: React.FC = () => {
           <Education />
         </main>
 
+        <ChatInterface />
+
         {/* Footer */}
-        <footer className="py-8 text-center text-slate-500 text-sm border-t border-white/5">
-          <p>&copy; {new Date().getFullYear()} Omar Masmoudi</p>
-          <p className="mt-2 text-xs">Built with React & Tailwind</p>
+        <footer className="border-t border-white/5 bg-slate-900/30">
+          <div className="max-w-4xl mx-auto px-6 py-16 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
+              Let's build something together
+            </h2>
+            <p className="text-slate-400 mb-8 max-w-md mx-auto">
+              Open to full-stack roles and freelance work. The fastest way to reach me is email.
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
+              <a
+                href={`mailto:${RESUME.personal.email}`}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary hover:bg-primary/90 text-white text-sm font-medium transition-colors"
+              >
+                <Mail className="w-4 h-4" />
+                {RESUME.personal.email}
+              </a>
+              <a
+                href={RESUME.personal.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn profile"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl glass-panel text-slate-300 hover:text-white text-sm font-medium transition-colors"
+              >
+                <Linkedin className="w-4 h-4" />
+                LinkedIn
+              </a>
+              <a
+                href={RESUME.personal.github}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitHub profile"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl glass-panel text-slate-300 hover:text-white text-sm font-medium transition-colors"
+              >
+                <Github className="w-4 h-4" />
+                GitHub
+              </a>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-white/5 text-slate-500 text-sm">
+              <p>&copy; {new Date().getFullYear()} Omar Masmoudi</p>
+              <a
+                href="#"
+                className="inline-flex items-center gap-1.5 hover:text-slate-300 transition-colors"
+              >
+                Back to top
+                <ArrowUp className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
         </footer>
       </div>
     </>
