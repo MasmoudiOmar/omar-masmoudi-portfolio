@@ -18,8 +18,9 @@ export interface EducationItem {
 
 export interface ProjectItem {
   name: string;
-  link: string;
-  description: string; // Added for better UI, derived from resume context or placeholders
+  /** Public URL, when the project has a reachable one. */
+  link?: string;
+  description: string;
 }
 
 export interface SkillCategory {
