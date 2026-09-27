@@ -1,104 +1,101 @@
 import React from 'react';
 import { RESUME } from '../constants';
-import { Code, Database, Cloud, Layout, Server, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
-// Skill icon mapping for Simple Icons CDN
+// Simple Icons slugs for the logos that exist; anything unmapped renders as text.
 const skillIcons: Record<string, string> = {
-  // Languages
-  'JavaScript': 'javascript',
   'TypeScript': 'typescript',
+  'JavaScript': 'javascript',
   'Java': 'openjdk',
   'SQL': 'mysql',
-  // Frontend
   'Next.js': 'nextdotjs',
   'React': 'react',
   'Angular': 'angular',
   'Tailwind CSS': 'tailwindcss',
   'shadcn/ui': 'shadcnui',
-  'daisyUI': 'daisyui',
-  'Angular Material': 'angular',
-  'RxJS': 'reactivex',
   'TanStack Query': 'reactquery',
-  // Backend
+  'RxJS': 'reactivex',
   'Node.js': 'nodedotjs',
   'Spring Boot': 'springboot',
   'tRPC': 'trpc',
   'OAuth2/JWT': 'jsonwebtokens',
   'Spring Data JPA': 'spring',
-  // Databases
   'PostgreSQL': 'postgresql',
-  'MySQL': 'mysql',
   'MongoDB': 'mongodb',
   'Redis': 'redis',
-  // AI & Integrations
-  'Stripe': 'stripe',
-  'OAuth2': 'auth0',
-  // DevOps & Tools
+  'Kafka': 'apachekafka',
+  'Gemini': 'googlegemini',
   'Docker': 'docker',
   'Kubernetes': 'kubernetes',
   'AWS': 'amazonaws',
+  'Cloudflare': 'cloudflare',
   'Vercel': 'vercel',
   'GitHub Actions': 'githubactions',
-  'Git': 'git',
-  'Maven': 'apachemaven',
 };
 
-// Category icons
-const categoryIcons: Record<string, React.ReactNode> = {
-  'Languages': <Code className="w-5 h-5" />,
-  'Frontend': <Layout className="w-5 h-5" />,
-  'Backend': <Server className="w-5 h-5" />,
-  'Databases': <Database className="w-5 h-5" />,
-  'AI & Integrations': <Sparkles className="w-5 h-5" />,
-  'DevOps & Tools': <Cloud className="w-5 h-5" />,
-};
+const Skills: React.FC = () => (
+  <section id="skills" className="py-24 border-t border-line">
+    <div className="max-w-5xl mx-auto px-6">
+      <div className="flex items-baseline gap-4 mb-4 reveal-section">
+        <h2 className="font-display text-4xl md:text-5xl text-ink">
+             <span className="mask-line"><span>What I work with</span></span>
+           </h2>
+        <div className="h-px flex-1 bg-line" />
+      </div>
+      <p className="text-muted mb-14 max-w-xl reveal-section">
+        Grouped by what I actually use it for. Where there's something to show, it links through.
+      </p>
 
-const Skills: React.FC = () => {
-  return (
-    <section id="skills" className="py-24 bg-slate-900/30">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="flex items-center gap-4 mb-16 reveal-section">
-           <h2 className="text-3xl font-bold text-white">Technical Skills</h2>
-           <div className="h-px flex-1 bg-white/10"></div>
-        </div>
+      <div className="divide-y divide-line border-y border-line">
+        {RESUME.skills.map((group, index) => (
+          <div
+            key={group.category}
+            className="reveal-section grid grid-cols-1 md:grid-cols-[180px_1fr] gap-3 md:gap-8 py-7"
+            style={{ transitionDelay: `${index * 60}ms` }}
+          >
+            <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-faint pt-1">
+              {group.category}
+            </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {RESUME.skills.map((category, index) => (
-            <div 
-              key={index} 
-              className="reveal-section glass-panel p-6 rounded-2xl border-t-4 border-t-primary hover:border-t-accent transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5"
-              style={{ transitionDelay: `${index * 100}ms` }}
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-primary/10 rounded-lg text-primary">
-                  {categoryIcons[category.category] || <Code className="w-5 h-5" />}
-                </div>
-                <h3 className="text-lg font-bold text-white">{category.category}</h3>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill, idx) => (
-                  <span 
-                    key={idx}
-                    className="group flex items-center gap-2 px-3 py-1.5 bg-slate-800 text-slate-300 text-sm rounded-lg border border-white/5 hover:border-primary/50 hover:text-white hover:bg-slate-700 transition-all cursor-default"
+            <div>
+              <ul className="flex flex-wrap gap-x-2 gap-y-2 mb-3">
+                {group.skills.map((skill) => (
+                  <li
+                    key={skill}
+                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-card border border-line rounded-lg text-sm text-ink"
                   >
                     {skillIcons[skill] && (
-                      <img 
-                        src={`https://cdn.simpleicons.org/${skillIcons[skill]}/64748b`}
-                        alt={skill}
-                        className="w-4 h-4 group-hover:brightness-150 transition-all"
-                        onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                      <img
+                        src={`https://cdn.simpleicons.org/${skillIcons[skill]}/8A877C`}
+                        alt=""
+                        aria-hidden="true"
+                        className="w-3.5 h-3.5"
+                        loading="lazy"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).style.display = 'none';
+                        }}
                       />
                     )}
                     {skill}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
+
+              {group.proof && (
+                <a
+                  href={group.proof.href}
+                  className="group inline-flex items-center gap-1.5 text-sm text-accent font-medium"
+                >
+                  {group.proof.label}
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                </a>
+              )}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Skills;

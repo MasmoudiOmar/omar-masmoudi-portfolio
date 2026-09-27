@@ -7,7 +7,7 @@
     <meta name="description" content="Full Stack Software Engineer with 4+ years architecting scalable web applications across Education and Blockchain. Next.js, Angular, React, Spring Boot, Node.js, and AI/ML integrations. Co-founder of two AI-powered products." />
     <meta name="author" content="Omar Masmoudi" />
     <link rel="canonical" href="https://om-portfolio.pages.dev/" />
-    <meta name="theme-color" content="#0f172a" />
+    <meta name="theme-color" content="#F7F6F3" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Omar Masmoudi | Full Stack Software Engineer" />
@@ -16,28 +16,37 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Omar Masmoudi | Full Stack Software Engineer" />
     <meta name="twitter:description" content="4+ years architecting scalable web apps across Education and Blockchain. Next.js, Angular, React, Spring Boot, Node.js and AI/ML integrations." />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230f172a'/%3E%3Crect x='4' y='4' width='92' height='92' rx='16' fill='none' stroke='%2306b6d4' stroke-width='2'/%3E%3Ctext x='50' y='62' font-family='Arial, sans-serif' font-size='36' font-weight='bold' fill='%23ffffff' text-anchor='middle'%3EOM%3C/text%3E%3Ccircle cx='82' cy='22' r='6' fill='%2306b6d4'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3Cmask id='k'%3E%3Crect width='48' height='48' fill='white'/%3E%3Ctext x='24' y='32.5' text-anchor='middle' font-family='Georgia, serif' font-size='25' font-style='italic' fill='black'%3Eom%3C/text%3E%3C/mask%3E%3C/defs%3E%3Ccircle cx='24' cy='24' r='22' fill='%23171612' mask='url(%23k)'/%3E%3Ccircle cx='24' cy='2.5' r='4' fill='%23C23A0A'/%3E%3C/svg%3E">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              background: '#0f172a',
-              surface: '#1e293b',
-              primary: '#3b82f6',
-              secondary: '#64748b',
-              accent: '#06b6d4',
+              // Driven by CSS variables so the whole palette can flip themes.
+              paper:  'rgb(var(--c-paper) / <alpha-value>)',
+              card:   'rgb(var(--c-card) / <alpha-value>)',
+              sunken: 'rgb(var(--c-sunken) / <alpha-value>)',
+              ink:    'rgb(var(--c-ink) / <alpha-value>)',
+              muted:  'rgb(var(--c-muted) / <alpha-value>)',
+              faint:  'rgb(var(--c-faint) / <alpha-value>)',
+              line:   'rgb(var(--c-line) / <alpha-value>)',
+              accent: 'rgb(var(--c-accent) / <alpha-value>)',
+              deep:   'rgb(var(--c-deep) / <alpha-value>)',
+              // Fixed: the terminal panel stays dark in both themes.
+              term:   'rgb(var(--c-term) / <alpha-value>)',
+              termfg: 'rgb(var(--c-termfg) / <alpha-value>)',
             },
             fontFamily: {
-              sans: ['Outfit', 'sans-serif'],
-              mono: ['JetBrains Mono', 'monospace'],
+              sans: ['Outfit', 'system-ui', 'sans-serif'],
+              serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+              mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
             }
           }
         }
       }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
       /* `overflow-x: clip` rather than `hidden`: `hidden` would pair with the
          default `overflow-y: visible` to compute as `auto`, turning these into
@@ -53,9 +62,11 @@
       section[id] { scroll-margin-top: 6rem; }
       body { 
         font-family: 'Outfit', sans-serif; 
-        background-color: #0f172a; 
-        color: #f8fafc;
+        background-color: rgb(var(--c-paper)); 
+        color: rgb(var(--c-ink));
+        transition: background-color 0.3s ease, color 0.3s ease;
         overflow-x: clip;
+        -webkit-font-smoothing: antialiased;
       }
       
       /* Grain texture overlay */
@@ -64,22 +75,30 @@
         position: fixed;
         inset: 0;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-        opacity: 0.025;
+        opacity: 0.035;
+        mix-blend-mode: multiply;
         pointer-events: none;
         z-index: 1000;
       }
       
       /* Custom scrollbar */
       ::-webkit-scrollbar { width: 8px; }
-      ::-webkit-scrollbar-track { background: #0f172a; }
-      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-      ::-webkit-scrollbar-thumb:hover { background: #475569; }
+      ::-webkit-scrollbar-track { background: rgb(var(--c-sunken)); }
+      ::-webkit-scrollbar-thumb { background: rgb(var(--c-line)); border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: rgb(var(--c-faint)); }
       
+      /* Kept the class name so component markup stays put; it is a paper card now. */
       .glass-panel {
-        background: rgba(30, 41, 59, 0.7);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        background: rgb(var(--c-card));
+        border: 1px solid rgb(var(--c-line));
+      }
+      
+      ::selection { background: rgba(217, 66, 12, 0.18); }
+      
+      .font-display {
+        font-family: 'Instrument Serif', Georgia, serif;
+        font-weight: 400;
+        letter-spacing: -0.015em;
       }
       
       /* Entrance animations */
@@ -171,7 +190,37 @@
       
       /* CSS variable for accent color RGB */
       :root {
-        --color-accent-rgb: 6, 182, 212;
+        --c-paper:  247 246 243;
+        --c-card:   255 255 255;
+        --c-sunken: 237 234 227;
+        --c-ink:     23  22  18;
+        --c-muted:   92  89  79;
+        --c-faint:  110 107  97;
+        --c-line:   223 219 210;
+        --c-accent: 194  58  10;
+        --c-deep:    61  90  76;
+        --c-term:    20  19  16;
+        --c-termfg: 242 239 232;
+        --color-accent-rgb: 194, 58, 10;
+        color-scheme: light;
+      }
+      
+      /* Warm near-black rather than grey — keeps the editorial character. */
+      /* Grain must lighten on dark or it just paints the page black. */
+      :root[data-theme="dark"] body::before { mix-blend-mode: screen; opacity: 0.03; }
+      
+      :root[data-theme="dark"] {
+        --c-paper:   20  19  15;
+        --c-card:    28  26  21;
+        --c-sunken:  35  32  25;
+        --c-ink:    242 239 232;
+        --c-muted:  168 162 150;
+        --c-faint:  138 132 119;
+        --c-line:    50  46  38;
+        --c-accent: 255  92  40;
+        --c-deep:   127 183 158;
+        --color-accent-rgb: 255, 92, 40;
+        color-scheme: dark;
       }
       
       /* Terminal loader animations */
@@ -201,6 +250,52 @@
         animation: portfolio-enter 0.6s ease-out forwards;
       }
       
+      /* ── Logo ─────────────────────────────────────────────── */
+      .logo-orbit { transform-origin: 24px 24px; }
+      .logo:hover .logo-orbit,
+      a:hover .logo .logo-orbit {
+        animation: logo-orbit 1.1s cubic-bezier(0.65, 0, 0.35, 1);
+      }
+      @keyframes logo-orbit {
+        from { transform: rotate(0deg); }
+        to   { transform: rotate(360deg); }
+      }
+      
+      /* ── Editorial line reveal ────────────────────────────── */
+      /* Each line sits in its own clipping box and rises into view. */
+      .mask-line { display: block; overflow: hidden; padding-bottom: 0.06em; }
+      .mask-line > * {
+        display: block;
+        transform: translateY(110%);
+        transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .reveal-section.visible .mask-line > * { transform: translateY(0); }
+      
+      /* Mount-time reveal needs an animation: a transition has no start state
+         to run from when both classes are present on first paint. */
+      .mask-rise > * {
+        transform: translateY(110%);
+        animation: mask-rise 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+      @keyframes mask-rise {
+        from { transform: translateY(110%); }
+        to   { transform: translateY(0); }
+      }
+      
+      /* ── Link underline ───────────────────────────────────── */
+      .link-underline {
+        background-image: linear-gradient(currentColor, currentColor);
+        background-size: 0% 1px;
+        background-repeat: no-repeat;
+        background-position: left 100%;
+        transition: background-size 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .link-underline:hover { background-size: 100% 1px; }
+      
+      /* ── Lift ─────────────────────────────────────────────── */
+      .lift { transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease; }
+      .lift:hover { transform: translateY(-2px); }
+      
       .terminal-line {
         animation: terminalFadeIn 0.15s ease-out forwards;
       }
@@ -216,14 +311,32 @@
         .reveal-section,
         .animate-fade-in-up,
         .animate-fade-in,
-        .animate-slide-in-right {
+        .animate-slide-in-right,
+        .mask-line > *,
+        .mask-rise > * {
           opacity: 1 !important;
           transform: none !important;
         }
+        .logo-orbit { animation: none !important; }
       }
     </style>
 </head>
   <body>
+    <script>
+      // Inline and synchronous on purpose: applying the theme after React
+      // mounts would flash the light palette at dark-mode visitors.
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var theme = (stored === 'light' || stored === 'dark')
+            ? stored
+            : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
+    </script>
     <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>

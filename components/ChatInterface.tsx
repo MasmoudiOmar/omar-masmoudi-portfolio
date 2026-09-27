@@ -1,13 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User, X, Sparkles, MessageSquare } from 'lucide-react';
 import { sendChatMessage } from '../services/geminiService';
+import AgentTrace from './AgentTrace';
 import { ChatMessage } from '../types';
 
 const ChatInterface: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: 'model', text: "Hi! I'm Omar's AI Assistant. Ask me anything about his experience, skills, or projects." }
+    {
+      role: 'model',
+      text:
+        "I'm an agent with tools over Omar's resume. Ask me something and you'll see which tools I call to answer it."
+    }
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -31,9 +36,9 @@ const ChatInterface: React.FC = () => {
     try {
       const history = messages.map(m => ({ role: m.role, text: m.text }));
 
-      const responseText = await sendChatMessage(userMessage, history);
-      
-      setMessages(prev => [...prev, { role: 'model', text: responseText }]);
+      const { text, trace } = await sendChatMessage(userMessage, history);
+
+      setMessages(prev => [...prev, { role: 'model', text, trace }]);
     } catch (error) {
       setMessages(prev => [...prev, { role: 'model', text: "Sorry, something went wrong. Please try again." }]);
     } finally {
@@ -54,58 +59,61 @@ const ChatInterface: React.FC = () => {
       <div 
         className={`
           pointer-events-auto
-          glass-panel rounded-2xl shadow-2xl overflow-hidden
+          bg-term border border-term rounded-2xl shadow-2xl shadow-term/25 overflow-hidden
           transition-all duration-300 ease-in-out origin-bottom-right
           flex flex-col
           ${isOpen ? 'w-[350px] sm:w-[400px] h-[500px] max-h-[calc(100vh-7rem)] opacity-100 scale-100 mb-4' : 'w-0 h-0 opacity-0 scale-50'}
         `}
       >
         {/* Header */}
-        <div className="bg-primary/20 p-4 border-b border-white/10 flex justify-between items-center backdrop-blur-md">
+        <div className="bg-white/[0.04] p-4 border-b border-white/10 flex justify-between items-center">
           <div className="flex items-center gap-2">
             <div className="p-1.5 bg-accent/20 rounded-lg">
               <Sparkles className="w-4 h-4 text-accent" />
             </div>
             <div>
-              <h3 className="font-semibold text-white text-sm">Ask about Omar</h3>
-              <p className="text-xs text-slate-400">Powered by Gemini 2.5</p>
+              <h3 className="font-semibold text-termfg text-sm">Resume agent</h3>
+              <p className="text-xs text-white/45">Gemini 2.5 · 5 tools · traced</p>
             </div>
           </div>
           <button 
             onClick={() => setIsOpen(false)}
-            className="text-slate-400 hover:text-white transition-colors"
+            className="text-white/45 hover:text-termfg transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-900/50">
+        <div className="flex-1 overflow-y-auto p-4 space-y-4">
           {messages.map((msg, index) => (
             <div 
               key={index} 
               className={`flex gap-3 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               {msg.role === 'model' && (
-                <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 rounded-full bg-white/[0.07] flex items-center justify-center flex-shrink-0">
                   <Bot className="w-4 h-4 text-accent" />
                 </div>
               )}
               
-              <div 
-                className={`
-                  max-w-[80%] p-3 text-sm rounded-2xl
-                  ${msg.role === 'user' 
-                    ? 'bg-primary text-white rounded-br-none' 
-                    : 'bg-slate-800 text-slate-200 rounded-bl-none border border-white/5'}
-                `}
-              >
-                {msg.text}
+              <div className="max-w-[85%]">
+                {msg.role === 'model' && msg.trace && <AgentTrace trace={msg.trace} />}
+                <div
+                  className={`
+                    p-3 text-sm rounded-2xl
+                    ${msg.role === 'user'
+                      ? 'bg-accent text-white rounded-br-none'
+                      : 'bg-white/[0.06] text-termfg/90 rounded-bl-none border border-white/5'}
+                  `}
+                >
+                  {msg.text}
+                </div>
               </div>
 
               {msg.role === 'user' && (
-                <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <User className="w-4 h-4 text-primary" />
+                <div className="w-8 h-8 rounded-full bg-accent/25 flex items-center justify-center flex-shrink-0">
+                  <User className="w-4 h-4 text-accent" />
                 </div>
               )}
             </div>
@@ -113,13 +121,13 @@ const ChatInterface: React.FC = () => {
           
           {isLoading && (
             <div className="flex gap-3 justify-start">
-               <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center flex-shrink-0">
+               <div className="w-8 h-8 rounded-full bg-white/[0.07] flex items-center justify-center flex-shrink-0">
                   <Bot className="w-4 h-4 text-accent" />
                 </div>
-                <div className="bg-slate-800 p-3 rounded-2xl rounded-bl-none border border-white/5 flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce"></span>
-                  <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce delay-75"></span>
-                  <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce delay-150"></span>
+                <div className="bg-white/[0.06] p-3 rounded-2xl rounded-bl-none border border-white/5 flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 bg-white/50 rounded-full animate-bounce"></span>
+                  <span className="w-1.5 h-1.5 bg-white/50 rounded-full animate-bounce delay-75"></span>
+                  <span className="w-1.5 h-1.5 bg-white/50 rounded-full animate-bounce delay-150"></span>
                 </div>
             </div>
           )}
@@ -127,21 +135,21 @@ const ChatInterface: React.FC = () => {
         </div>
 
         {/* Input */}
-        <div className="p-4 bg-slate-900 border-t border-white/10">
+        <div className="p-4 bg-white/[0.03] border-t border-white/10">
           <div className="flex gap-2">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="E.g., What stack does Omar use?"
-              className="flex-1 bg-slate-800 border-none text-white text-sm rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-accent/50 outline-none placeholder:text-slate-500"
+              placeholder="E.g., What did Omar build at Solvizor?"
+              className="flex-1 bg-white/[0.07] border border-white/10 text-termfg text-sm rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-accent/50 outline-none placeholder:text-white/35"
               disabled={isLoading}
             />
             <button
               onClick={handleSend}
               disabled={!input.trim() || isLoading}
-              className="bg-primary hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed text-white p-2.5 rounded-xl transition-all"
+              className="bg-accent hover:bg-accent/90 disabled:opacity-40 disabled:cursor-not-allowed text-white p-2.5 rounded-xl transition-all"
             >
               <Send className="w-4 h-4" />
             </button>
@@ -156,16 +164,16 @@ const ChatInterface: React.FC = () => {
           pointer-events-auto
           group relative flex items-center justify-center
           w-14 h-14 rounded-full 
-          bg-gradient-to-r from-primary to-accent
-          shadow-lg hover:shadow-cyan-500/30
+          bg-term
+          shadow-lg shadow-term/25 hover:shadow-term/40
           transition-all duration-300 transform hover:scale-105
           ${isOpen ? 'opacity-0 scale-50 pointer-events-none' : 'opacity-100 scale-100'}
         `}
       >
-        <span className="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-20 transition-opacity"></span>
-        <MessageSquare className="w-6 h-6 text-white" />
+        <span className="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-10 transition-opacity"></span>
+        <MessageSquare className="w-6 h-6 text-termfg" />
         {/* Pulse effect */}
-        <span className="absolute -inset-1 rounded-full bg-accent opacity-20 animate-ping"></span>
+        <span className="absolute -inset-1 rounded-full bg-accent opacity-25 animate-ping"></span>
       </button>
     </div>
   );

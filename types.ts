@@ -16,15 +16,56 @@ export interface EducationItem {
   details?: string;
 }
 
+/** A looping clip of the product, in two codecs plus a still for the poster. */
+export interface Media {
+  mp4: string;
+  webm: string;
+  poster: string;
+}
+
+export interface ShowcaseFeature {
+  title: string;
+  description: string;
+  media?: Media;
+}
+
+export interface ShowcaseStage {
+  label: string;
+  detail: string;
+}
+
+export interface ProjectShowcase {
+  /** URL fragment, e.g. "solvizor" for #/solvizor */
+  slug: string;
+  tagline: string;
+  overview: string[];
+  role: string;
+  period: string;
+  /** Where the project stands today, stated plainly. */
+  status: string;
+  stack: { group: string; items: string[] }[];
+  metrics: { value: string; label: string }[];
+  features: ShowcaseFeature[];
+  /** Left-to-right stages of the data pipeline. */
+  pipeline: ShowcaseStage[];
+}
+
 export interface ProjectItem {
   name: string;
-  link: string;
-  description: string; // Added for better UI, derived from resume context or placeholders
+  /** Public URL, when the project has a reachable one. */
+  link?: string;
+  description: string;
+  /** Clip used as the card's sneak peek. */
+  preview?: Media;
+  /** When present, the card links through to a showcase page. */
+  showcase?: ProjectShowcase;
 }
 
 export interface SkillCategory {
   category: string;
   skills: string[];
+  /** Where this group was actually used, when there is something to point at. */
+  proof?: { label: string; href: string };
 }
 
 export interface ResumeData {
@@ -44,8 +85,18 @@ export interface ResumeData {
   projects: ProjectItem[];
 }
 
+/** One tool the agent called while answering. */
+export interface TraceStep {
+  tool: string;
+  args: Record<string, unknown>;
+  result: unknown;
+  ms: number;
+}
+
 export interface ChatMessage {
   role: 'user' | 'model';
   text: string;
   isThinking?: boolean;
+  /** The agent's tool calls for this answer, shown above it. */
+  trace?: TraceStep[];
 }
