@@ -35,19 +35,19 @@ const Step: React.FC<{ step: TraceStep; index: number }> = ({ step, index }) => 
         className="w-full flex items-center gap-2 text-left py-1 group/step"
       >
         <ChevronRight
-          className={`w-3 h-3 text-slate-600 flex-shrink-0 transition-transform ${open ? 'rotate-90' : ''}`}
+          className={`w-3 h-3 text-white/35 flex-shrink-0 transition-transform ${open ? 'rotate-90' : ''}`}
         />
-        <span className="text-slate-600 tabular-nums">{index + 1}</span>
+        <span className="text-white/35 tabular-nums">{index + 1}</span>
         <code className="text-accent/90">{step.tool}</code>
-        <code className="text-slate-500 truncate hidden sm:inline">{formatArgs(step.args)}</code>
-        <span className="ml-auto flex items-center gap-2 flex-shrink-0 text-slate-600">
+        <code className="text-white/40 truncate hidden sm:inline">{formatArgs(step.args)}</code>
+        <span className="ml-auto flex items-center gap-2 flex-shrink-0 text-white/35">
           <span>{summarise(step.result)}</span>
           <span className="tabular-nums">{step.ms}ms</span>
         </span>
       </button>
 
       {open && (
-        <pre className="mt-1 mb-2 ml-5 p-2 rounded-lg bg-slate-950/70 border border-white/5 text-[10px] leading-relaxed text-slate-400 overflow-x-auto max-h-40">
+        <pre className="mt-1 mb-2 ml-5 p-2 rounded-lg bg-black/40 border border-white/5 text-[10px] leading-relaxed text-white/55 overflow-x-auto max-h-40">
           {JSON.stringify(step.result, null, 2)}
         </pre>
       )}
@@ -68,18 +68,18 @@ const AgentTrace: React.FC<{ trace: TraceStep[] }> = ({ trace }) => {
   const total = trace.reduce((sum, step) => sum + step.ms, 0);
 
   return (
-    <div className="mb-2 rounded-xl border border-white/5 bg-slate-900/60 text-[11px] font-mono">
+    <div className="mb-2 rounded-xl border border-white/10 bg-black/25 text-[11px] font-mono">
       <button
         onClick={() => setOpen((value) => !value)}
         aria-expanded={open}
-        className="w-full flex items-center gap-2 px-3 py-2 text-slate-400 hover:text-slate-200 transition-colors"
+        className="w-full flex items-center gap-2 px-3 py-2 text-white/50 hover:text-paper transition-colors"
       >
-        <Terminal className="w-3.5 h-3.5 text-accent/70" />
+        <Terminal className="w-3.5 h-3.5 text-accent" />
         <span>
           {trace.length} tool call{trace.length === 1 ? '' : 's'}
         </span>
-        <span className="text-slate-600">·</span>
-        <span className="text-slate-600 tabular-nums">{total}ms</span>
+        <span className="text-white/35">·</span>
+        <span className="text-white/35 tabular-nums">{total}ms</span>
         <ChevronRight
           className={`w-3 h-3 ml-auto transition-transform ${open ? 'rotate-90' : ''}`}
         />

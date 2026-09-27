@@ -101,27 +101,30 @@ export const RESUME: ResumeData = {
   skills: [
     {
       category: "Languages",
-      skills: ["JavaScript", "TypeScript", "Java", "SQL"]
+      skills: ["TypeScript", "JavaScript", "Java", "SQL"]
     },
     {
       category: "Frontend",
-      skills: ["Next.js", "React", "Angular", "Tailwind CSS", "shadcn/ui", "daisyUI", "Angular Material", "PrimeNG", "RxJS", "TanStack Query"]
+      skills: ["Next.js", "React", "Angular", "Tailwind CSS", "shadcn/ui", "TanStack Query", "RxJS"],
+      proof: { label: "Frontend architecture on Solvizor", href: "#/solvizor" }
     },
     {
       category: "Backend",
-      skills: ["Node.js", "Spring Boot", "REST APIs", "tRPC", "WebSockets", "OAuth2/JWT", "Spring Data JPA", "MVC"]
+      skills: ["Node.js", "Spring Boot", "tRPC", "WebSockets", "OAuth2/JWT", "Spring Data JPA"]
     },
     {
-      category: "Databases",
-      skills: ["PostgreSQL", "MySQL", "MongoDB", "Redis"]
+      category: "Data",
+      skills: ["PostgreSQL", "MongoDB", "Redis", "Kafka"],
+      proof: { label: "50M+ swaps through the pipeline", href: "#/solvizor" }
     },
     {
-      category: "AI & Integrations",
-      skills: ["OpenRouter", "LLM APIs", "AI/ML pipeline design", "Stripe", "OAuth2"]
+      category: "AI & Evaluation",
+      skills: ["OpenRouter", "Gemini", "Tool calling", "Agent trajectories", "Rubric design", "Benchmark suites"],
+      proof: { label: "Try the agent on this page", href: "#agent" }
     },
     {
-      category: "DevOps & Tools",
-      skills: ["Docker", "Kubernetes", "AWS", "Vercel", "GitHub Actions", "Git", "Maven"]
+      category: "Platform",
+      skills: ["Docker", "Kubernetes", "AWS", "Cloudflare", "Vercel", "GitHub Actions"]
     }
   ],
   projects: [

@@ -64,6 +64,8 @@ export interface ProjectItem {
 export interface SkillCategory {
   category: string;
   skills: string[];
+  /** Where this group was actually used, when there is something to point at. */
+  proof?: { label: string; href: string };
 }
 
 export interface ResumeData {

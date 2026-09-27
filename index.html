@@ -7,7 +7,7 @@
     <meta name="description" content="Full Stack Software Engineer with 4+ years architecting scalable web applications across Education and Blockchain. Next.js, Angular, React, Spring Boot, Node.js, and AI/ML integrations. Co-founder of two AI-powered products." />
     <meta name="author" content="Omar Masmoudi" />
     <link rel="canonical" href="https://om-portfolio.pages.dev/" />
-    <meta name="theme-color" content="#0f172a" />
+    <meta name="theme-color" content="#F7F6F3" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Omar Masmoudi | Full Stack Software Engineer" />
@@ -16,28 +16,33 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Omar Masmoudi | Full Stack Software Engineer" />
     <meta name="twitter:description" content="4+ years architecting scalable web apps across Education and Blockchain. Next.js, Angular, React, Spring Boot, Node.js and AI/ML integrations." />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230f172a'/%3E%3Crect x='4' y='4' width='92' height='92' rx='16' fill='none' stroke='%2306b6d4' stroke-width='2'/%3E%3Ctext x='50' y='62' font-family='Arial, sans-serif' font-size='36' font-weight='bold' fill='%23ffffff' text-anchor='middle'%3EOM%3C/text%3E%3Ccircle cx='82' cy='22' r='6' fill='%2306b6d4'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23F7F6F3'/%3E%3Crect x='3' y='3' width='94' height='94' rx='19' fill='none' stroke='%23171612' stroke-width='5'/%3E%3Ctext x='50' y='66' font-family='Georgia, serif' font-size='46' fill='%23171612' text-anchor='middle'%3EOM%3C/text%3E%3Ccircle cx='79' cy='23' r='7' fill='%23D9420C'/%3E%3C/svg%3E">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              background: '#0f172a',
-              surface: '#1e293b',
-              primary: '#3b82f6',
-              secondary: '#64748b',
-              accent: '#06b6d4',
+              paper: '#F7F6F3',      // page ground
+              card: '#FFFFFF',       // raised surface
+              sunken: '#EDEAE3',     // subtle fill
+              ink: '#171612',        // primary text / dark blocks
+              muted: '#5C594F',      // secondary text
+              faint: '#8A877C',      // tertiary text
+              line: '#DFDBD2',       // borders
+              accent: '#D9420C',     // hot orange
+              deep: '#3D5A4C',       // secondary accent
             },
             fontFamily: {
-              sans: ['Outfit', 'sans-serif'],
-              mono: ['JetBrains Mono', 'monospace'],
+              sans: ['Outfit', 'system-ui', 'sans-serif'],
+              serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+              mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
             }
           }
         }
       }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
       /* `overflow-x: clip` rather than `hidden`: `hidden` would pair with the
          default `overflow-y: visible` to compute as `auto`, turning these into
@@ -53,9 +58,10 @@
       section[id] { scroll-margin-top: 6rem; }
       body { 
         font-family: 'Outfit', sans-serif; 
-        background-color: #0f172a; 
-        color: #f8fafc;
+        background-color: #F7F6F3; 
+        color: #171612;
         overflow-x: clip;
+        -webkit-font-smoothing: antialiased;
       }
       
       /* Grain texture overlay */
@@ -64,22 +70,29 @@
         position: fixed;
         inset: 0;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-        opacity: 0.025;
+        opacity: 0.035;
         pointer-events: none;
         z-index: 1000;
       }
       
       /* Custom scrollbar */
       ::-webkit-scrollbar { width: 8px; }
-      ::-webkit-scrollbar-track { background: #0f172a; }
-      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-      ::-webkit-scrollbar-thumb:hover { background: #475569; }
+      ::-webkit-scrollbar-track { background: #EDEAE3; }
+      ::-webkit-scrollbar-thumb { background: #CFCBC1; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #B4AFA3; }
       
+      /* Kept the class name so component markup stays put; it is a paper card now. */
       .glass-panel {
-        background: rgba(30, 41, 59, 0.7);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        background: #FFFFFF;
+        border: 1px solid #DFDBD2;
+      }
+      
+      ::selection { background: rgba(217, 66, 12, 0.18); }
+      
+      .font-display {
+        font-family: 'Instrument Serif', Georgia, serif;
+        font-weight: 400;
+        letter-spacing: -0.015em;
       }
       
       /* Entrance animations */
@@ -171,7 +184,7 @@
       
       /* CSS variable for accent color RGB */
       :root {
-        --color-accent-rgb: 6, 182, 212;
+        --color-accent-rgb: 217, 66, 12;
       }
       
       /* Terminal loader animations */
