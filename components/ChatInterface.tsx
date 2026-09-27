@@ -1,13 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User, X, Sparkles, MessageSquare } from 'lucide-react';
 import { sendChatMessage } from '../services/geminiService';
+import AgentTrace from './AgentTrace';
 import { ChatMessage } from '../types';
 
 const ChatInterface: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: 'model', text: "Hi! I'm Omar's AI Assistant. Ask me anything about his experience, skills, or projects." }
+    {
+      role: 'model',
+      text:
+        "I'm an agent with tools over Omar's resume. Ask me something and you'll see which tools I call to answer it."
+    }
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -31,9 +36,9 @@ const ChatInterface: React.FC = () => {
     try {
       const history = messages.map(m => ({ role: m.role, text: m.text }));
 
-      const responseText = await sendChatMessage(userMessage, history);
-      
-      setMessages(prev => [...prev, { role: 'model', text: responseText }]);
+      const { text, trace } = await sendChatMessage(userMessage, history);
+
+      setMessages(prev => [...prev, { role: 'model', text, trace }]);
     } catch (error) {
       setMessages(prev => [...prev, { role: 'model', text: "Sorry, something went wrong. Please try again." }]);
     } finally {
@@ -67,8 +72,8 @@ const ChatInterface: React.FC = () => {
               <Sparkles className="w-4 h-4 text-accent" />
             </div>
             <div>
-              <h3 className="font-semibold text-white text-sm">Ask about Omar</h3>
-              <p className="text-xs text-slate-400">Powered by Gemini 2.5</p>
+              <h3 className="font-semibold text-white text-sm">Resume agent</h3>
+              <p className="text-xs text-slate-400">Gemini 2.5 · 5 tools · traced</p>
             </div>
           </div>
           <button 
@@ -92,15 +97,18 @@ const ChatInterface: React.FC = () => {
                 </div>
               )}
               
-              <div 
-                className={`
-                  max-w-[80%] p-3 text-sm rounded-2xl
-                  ${msg.role === 'user' 
-                    ? 'bg-primary text-white rounded-br-none' 
-                    : 'bg-slate-800 text-slate-200 rounded-bl-none border border-white/5'}
-                `}
-              >
-                {msg.text}
+              <div className="max-w-[85%]">
+                {msg.role === 'model' && msg.trace && <AgentTrace trace={msg.trace} />}
+                <div
+                  className={`
+                    p-3 text-sm rounded-2xl
+                    ${msg.role === 'user'
+                      ? 'bg-primary text-white rounded-br-none'
+                      : 'bg-slate-800 text-slate-200 rounded-bl-none border border-white/5'}
+                  `}
+                >
+                  {msg.text}
+                </div>
               </div>
 
               {msg.role === 'user' && (
@@ -134,7 +142,7 @@ const ChatInterface: React.FC = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="E.g., What stack does Omar use?"
+              placeholder="E.g., What did Omar build at Solvizor?"
               className="flex-1 bg-slate-800 border-none text-white text-sm rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-accent/50 outline-none placeholder:text-slate-500"
               disabled={isLoading}
             />

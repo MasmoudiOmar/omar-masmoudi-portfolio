@@ -52,7 +52,9 @@ export default defineConfig(({ mode }) => {
 
   return {
     server: {
-      port: 3000,
+      // Honour PORT when the environment assigns one, so the dev server can
+      // coexist with other local projects; 3000 stays the default.
+      port: Number(process.env.PORT) || 3000,
       host: '0.0.0.0',
     },
     plugins: [react(), chatApiDevServer(env.GEMINI_API_KEY)],

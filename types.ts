@@ -83,8 +83,18 @@ export interface ResumeData {
   projects: ProjectItem[];
 }
 
+/** One tool the agent called while answering. */
+export interface TraceStep {
+  tool: string;
+  args: Record<string, unknown>;
+  result: unknown;
+  ms: number;
+}
+
 export interface ChatMessage {
   role: 'user' | 'model';
   text: string;
   isThinking?: boolean;
+  /** The agent's tool calls for this answer, shown above it. */
+  trace?: TraceStep[];
 }
