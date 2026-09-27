@@ -37,7 +37,9 @@ const Skills: React.FC = () => (
   <section id="skills" className="py-24 border-t border-line">
     <div className="max-w-5xl mx-auto px-6">
       <div className="flex items-baseline gap-4 mb-4 reveal-section">
-        <h2 className="font-display text-4xl md:text-5xl text-ink">What I work with</h2>
+        <h2 className="font-display text-4xl md:text-5xl text-ink">
+             <span className="mask-line"><span>What I work with</span></span>
+           </h2>
         <div className="h-px flex-1 bg-line" />
       </div>
       <p className="text-muted mb-14 max-w-xl reveal-section">

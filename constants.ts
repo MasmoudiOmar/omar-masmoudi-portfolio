@@ -4,7 +4,7 @@ export const RESUME: ResumeData = {
   personal: {
     name: "Omar Masmoudi",
     title: "Full Stack Software Engineer",
-    email: "masmoudi.omaar@gmail.com",
+    email: "omar.masmoudi.pro@gmail.com",
     phone: "+216 53 516 045",
     location: "Ariana, Tunisia",
     linkedin: "https://linkedin.com/in/omaar-masmoudi",

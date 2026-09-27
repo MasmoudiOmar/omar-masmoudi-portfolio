@@ -22,7 +22,9 @@ const Projects: React.FC = () => {
     <section id="projects" className="py-24">
       <div className="max-w-6xl mx-auto px-6">
          <div className="flex items-center gap-4 mb-16 reveal-section">
-           <h2 className="font-display text-4xl md:text-5xl text-ink">Featured Projects</h2>
+           <h2 className="font-display text-4xl md:text-5xl text-ink">
+             <span className="mask-line"><span>Featured Projects</span></span>
+           </h2>
            <div className="h-px flex-1 bg-line"></div>
         </div>
 

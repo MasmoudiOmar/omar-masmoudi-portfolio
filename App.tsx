@@ -6,6 +6,7 @@ import Projects from './components/Projects';
 import Education from './components/Education';
 import ChatInterface from './components/ChatInterface';
 import ProjectShowcase from './components/ProjectShowcase';
+import Logo from './components/Logo';
 import { RESUME } from './constants';
 import { Menu, X, Mail, Linkedin, Github, ArrowUp } from 'lucide-react';
 
@@ -162,18 +163,8 @@ const App: React.FC = () => {
         />
         
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <a href="#" className="hover:scale-105 transition-transform" aria-label="Home">
-            <svg
-              width="38"
-              height="38"
-              viewBox="0 0 100 100"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect width="100" height="100" rx="22" fill="#F7F6F3" />
-              <rect x="3" y="3" width="94" height="94" rx="19" fill="none" stroke="#171612" strokeWidth="5" />
-              <text x="50" y="66" fontFamily="Instrument Serif, Georgia, serif" fontSize="46" fill="#171612" textAnchor="middle">OM</text>
-              <circle cx="79" cy="23" r="7" fill="#D9420C" />
-            </svg>
+          <a href="#" className="block" aria-label="Home">
+            <Logo size={40} className="text-ink" />
           </a>
 
           {/* Desktop Nav */}
@@ -183,9 +174,9 @@ const App: React.FC = () => {
                 key={link.name} 
                 href={link.href}
                 className={`text-sm font-medium transition-colors relative ${
-                  activeSection === link.id 
-                    ? 'text-ink' 
-                    : 'text-muted hover:text-ink'
+                  activeSection === link.id
+                    ? 'text-ink'
+                    : 'text-muted hover:text-ink link-underline'
                 }`}
               >
                 {link.name}

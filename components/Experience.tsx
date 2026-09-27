@@ -7,7 +7,9 @@ const Experience: React.FC = () => {
     <section id="experience" className="py-24 relative">
        <div className="max-w-4xl mx-auto px-6">
         <div className="flex items-center gap-4 mb-16 reveal-section">
-           <h2 className="font-display text-4xl md:text-5xl text-ink">Experience</h2>
+           <h2 className="font-display text-4xl md:text-5xl text-ink">
+             <span className="mask-line"><span>Experience</span></span>
+           </h2>
            <div className="h-px flex-1 bg-line"></div>
         </div>
 

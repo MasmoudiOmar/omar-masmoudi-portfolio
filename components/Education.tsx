@@ -7,7 +7,9 @@ const Education: React.FC = () => {
     <section id="education" className="py-24 bg-sunken/60">
       <div className="max-w-4xl mx-auto px-6">
         <div className="flex items-center gap-4 mb-12 reveal-section">
-           <h2 className="font-display text-4xl md:text-5xl text-ink">Education</h2>
+           <h2 className="font-display text-4xl md:text-5xl text-ink">
+             <span className="mask-line"><span>Education</span></span>
+           </h2>
            <div className="h-px flex-1 bg-line"></div>
         </div>
 
