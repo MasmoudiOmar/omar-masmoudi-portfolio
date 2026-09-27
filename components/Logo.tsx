@@ -1,41 +1,49 @@
 import React from 'react';
 
 /**
- * The mark: a trajectory inside a seal.
+ * The mark: a colophon.
  *
- * Four nodes rising along a path — the shape of an agent run, which is what
- * Omar spends his time reading. Reads as a monogram stroke at small sizes and
- * as instrumentation up close. The final node is the accent, because that is
- * the one you actually care about: where the run ended up.
- *
- * On hover the path redraws itself, left to right.
+ * A solid disc with the monogram knocked out of it, the way a publisher stamps
+ * a book — which suits an editorial page far better than a thin line glyph,
+ * and keeps a readable silhouette down to favicon size where strokes vanish.
+ * The accent notch sits on the rim as a fixed point of reference; on hover it
+ * travels once around the disc.
  */
 const Logo: React.FC<{ size?: number; className?: string }> = ({ size = 40, className = '' }) => (
   <svg
     width={size}
     height={size}
-    viewBox="0 0 40 40"
+    viewBox="0 0 48 48"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     role="img"
     aria-label="Omar Masmoudi"
     className={`logo ${className}`}
   >
-    <circle cx="20" cy="20" r="18.5" stroke="currentColor" strokeWidth="1.75" opacity="0.9" />
+    <defs>
+      {/* Knock the letters out of the disc rather than drawing them on top,
+          so the mark stays one solid shape. */}
+      <mask id="om-knockout">
+        <rect width="48" height="48" fill="white" />
+        <text
+          x="24"
+          y="32.5"
+          textAnchor="middle"
+          fontFamily="'Instrument Serif', Georgia, serif"
+          fontSize="25"
+          fontStyle="italic"
+          fill="black"
+        >
+          om
+        </text>
+      </mask>
+    </defs>
 
-    <path
-      className="logo-path"
-      d="M10.5 26 L16.5 19.5 L23 22.5 L29.5 12.5"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <circle cx="24" cy="24" r="22" fill="currentColor" mask="url(#om-knockout)" />
 
-    <circle cx="10.5" cy="26" r="1.7" fill="currentColor" />
-    <circle cx="16.5" cy="19.5" r="1.7" fill="currentColor" />
-    <circle cx="23" cy="22.5" r="1.7" fill="currentColor" />
-    <circle className="logo-dot" cx="29.5" cy="12.5" r="3" fill="#D9420C" />
+    <g className="logo-orbit">
+      <circle cx="24" cy="2.5" r="4" fill="#C23A0A" />
+    </g>
   </svg>
 );
 

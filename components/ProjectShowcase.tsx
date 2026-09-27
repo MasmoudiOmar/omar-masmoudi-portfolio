@@ -34,7 +34,7 @@ const Clip: React.FC<{ media: Media; label: string }> = ({ media, label }) => {
   };
 
   return (
-    <div className="relative rounded-xl overflow-hidden border border-line bg-sunken shadow-2xl shadow-ink/10">
+    <div className="relative rounded-xl overflow-hidden border border-line bg-term shadow-2xl shadow-ink/10">
       <video
         ref={videoRef}
         className="w-full block"
@@ -53,7 +53,7 @@ const Clip: React.FC<{ media: Media; label: string }> = ({ media, label }) => {
       {reduceMotion && (
         <button
           onClick={toggle}
-          className="absolute inset-0 flex items-center justify-center bg-ink/40 hover:bg-ink/20 transition-colors"
+          className="absolute inset-0 flex items-center justify-center bg-term/50 hover:bg-term/25 transition-colors"
           aria-label={playing ? `Pause ${label}` : `Play ${label}`}
         >
           <span className="p-4 rounded-full bg-white/15 backdrop-blur-sm text-white">

@@ -7,6 +7,7 @@ import Education from './components/Education';
 import ChatInterface from './components/ChatInterface';
 import ProjectShowcase from './components/ProjectShowcase';
 import Logo from './components/Logo';
+import ThemeToggle from './components/ThemeToggle';
 import { RESUME } from './constants';
 import { Menu, X, Mail, Linkedin, Github, ArrowUp } from 'lucide-react';
 
@@ -187,14 +188,21 @@ const App: React.FC = () => {
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden text-ink hover:scale-110 transition-transform"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X /> : <Menu />}
-          </button>
+          <div className="hidden md:block">
+            <ThemeToggle />
+          </div>
+
+          {/* Mobile: toggle stays reachable without opening the menu */}
+          <div className="flex items-center gap-3 md:hidden">
+            <ThemeToggle />
+            <button 
+              className="text-ink hover:scale-110 transition-transform"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X /> : <Menu />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Nav */}

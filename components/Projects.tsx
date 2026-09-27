@@ -47,7 +47,7 @@ const Projects: React.FC = () => {
                 onBlur={() => setHovered(null)}
               >
                 {/* Preview area: the clip when there is one, else the gradient treatment */}
-                <div className={`h-48 relative overflow-hidden ${project.preview ? 'bg-slate-950' : `bg-gradient-to-br ${style.gradient}`}`}>
+                <div className={`h-48 relative overflow-hidden ${project.preview ? 'bg-term' : `bg-gradient-to-br ${style.gradient}`}`}>
                   {project.preview ? (
                     <ProjectPreview
                       media={project.preview}
@@ -70,7 +70,7 @@ const Projects: React.FC = () => {
                   )}
 
                   {/* Keeps the title legible over any frame of the clip */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent opacity-70 pointer-events-none"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-term/80 via-transparent to-transparent opacity-70 pointer-events-none"></div>
 
                   {/* External link button, only when there is a live URL */}
                   {project.link && (
@@ -79,7 +79,7 @@ const Projects: React.FC = () => {
                       target="_blank"
                       rel="noreferrer"
                       aria-label={`Visit ${project.name}`}
-                      className="absolute top-4 right-4 p-2.5 bg-ink/50 backdrop-blur-sm rounded-full text-white/70 hover:text-white hover:bg-ink/70 transition-all hover:scale-110"
+                      className="absolute top-4 right-4 p-2.5 bg-term/60 backdrop-blur-sm rounded-full text-white/70 hover:text-white hover:bg-term/80 transition-all hover:scale-110"
                     >
                       <ExternalLink className="w-4 h-4" />
                     </a>

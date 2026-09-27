@@ -59,7 +59,7 @@ const ChatInterface: React.FC = () => {
       <div 
         className={`
           pointer-events-auto
-          bg-ink border border-ink rounded-2xl shadow-2xl shadow-ink/25 overflow-hidden
+          bg-term border border-term rounded-2xl shadow-2xl shadow-term/25 overflow-hidden
           transition-all duration-300 ease-in-out origin-bottom-right
           flex flex-col
           ${isOpen ? 'w-[350px] sm:w-[400px] h-[500px] max-h-[calc(100vh-7rem)] opacity-100 scale-100 mb-4' : 'w-0 h-0 opacity-0 scale-50'}
@@ -72,13 +72,13 @@ const ChatInterface: React.FC = () => {
               <Sparkles className="w-4 h-4 text-accent" />
             </div>
             <div>
-              <h3 className="font-semibold text-paper text-sm">Resume agent</h3>
+              <h3 className="font-semibold text-termfg text-sm">Resume agent</h3>
               <p className="text-xs text-white/45">Gemini 2.5 · 5 tools · traced</p>
             </div>
           </div>
           <button 
             onClick={() => setIsOpen(false)}
-            className="text-white/45 hover:text-paper transition-colors"
+            className="text-white/45 hover:text-termfg transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -104,7 +104,7 @@ const ChatInterface: React.FC = () => {
                     p-3 text-sm rounded-2xl
                     ${msg.role === 'user'
                       ? 'bg-accent text-white rounded-br-none'
-                      : 'bg-white/[0.06] text-paper/90 rounded-bl-none border border-white/5'}
+                      : 'bg-white/[0.06] text-termfg/90 rounded-bl-none border border-white/5'}
                   `}
                 >
                   {msg.text}
@@ -143,7 +143,7 @@ const ChatInterface: React.FC = () => {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="E.g., What did Omar build at Solvizor?"
-              className="flex-1 bg-white/[0.07] border border-white/10 text-paper text-sm rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-accent/50 outline-none placeholder:text-white/35"
+              className="flex-1 bg-white/[0.07] border border-white/10 text-termfg text-sm rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-accent/50 outline-none placeholder:text-white/35"
               disabled={isLoading}
             />
             <button
@@ -164,14 +164,14 @@ const ChatInterface: React.FC = () => {
           pointer-events-auto
           group relative flex items-center justify-center
           w-14 h-14 rounded-full 
-          bg-ink
-          shadow-lg shadow-ink/25 hover:shadow-ink/40
+          bg-term
+          shadow-lg shadow-term/25 hover:shadow-term/40
           transition-all duration-300 transform hover:scale-105
           ${isOpen ? 'opacity-0 scale-50 pointer-events-none' : 'opacity-100 scale-100'}
         `}
       >
         <span className="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-10 transition-opacity"></span>
-        <MessageSquare className="w-6 h-6 text-paper" />
+        <MessageSquare className="w-6 h-6 text-termfg" />
         {/* Pulse effect */}
         <span className="absolute -inset-1 rounded-full bg-accent opacity-25 animate-ping"></span>
       </button>

@@ -54,7 +54,7 @@ const Hero: React.FC = () => {
           style={{ animationDelay: '0.1s' }}
         >
           <p className="text-xl md:text-2xl text-ink leading-snug mb-4">
-            I build full-stack products around AI — and evaluate the agents inside them.
+            I build software that holds up — and I measure whether it actually does.
           </p>
           <p className="text-base text-muted leading-relaxed">
             {personal.summary}

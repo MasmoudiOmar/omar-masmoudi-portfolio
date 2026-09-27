@@ -72,7 +72,7 @@ const AgentTrace: React.FC<{ trace: TraceStep[] }> = ({ trace }) => {
       <button
         onClick={() => setOpen((value) => !value)}
         aria-expanded={open}
-        className="w-full flex items-center gap-2 px-3 py-2 text-white/50 hover:text-paper transition-colors"
+        className="w-full flex items-center gap-2 px-3 py-2 text-white/50 hover:text-termfg transition-colors"
       >
         <Terminal className="w-3.5 h-3.5 text-accent" />
         <span>
