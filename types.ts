@@ -34,6 +34,13 @@ export interface ShowcaseStage {
   detail: string;
 }
 
+export interface ShowcaseScreen {
+  /** WebP source, with a JPEG fallback for older browsers. */
+  webp: string;
+  jpg: string;
+  caption: string;
+}
+
 export interface ProjectShowcase {
   /** URL fragment, e.g. "solvizor" for #/solvizor */
   slug: string;
@@ -48,6 +55,8 @@ export interface ProjectShowcase {
   features: ShowcaseFeature[];
   /** Left-to-right stages of the data pipeline. */
   pipeline: ShowcaseStage[];
+  /** Stills captured from the running app. */
+  screens?: ShowcaseScreen[];
 }
 
 export interface ProjectItem {

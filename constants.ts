@@ -194,6 +194,18 @@ export const RESUME: ResumeData = {
           { label: "Workers", detail: "Node.js workers fetch signatures in batches, parse transactions, and update prices." },
           { label: "Store", detail: "Parsed swaps land in PostgreSQL with full, auditable history; chat and content live in MongoDB." },
           { label: "AI layer", detail: "The agent queries that store through 20+ tools, with model fallback via OpenRouter." }
+        ],
+        screens: [
+          {
+            webp: "/media/solvizor/shot-landing.webp",
+            jpg: "/media/solvizor/shot-landing.jpg",
+            caption: "The landing page — wallet-first onboarding, no email required."
+          },
+          {
+            webp: "/media/solvizor/shot-transactions.webp",
+            jpg: "/media/solvizor/shot-transactions.jpg",
+            caption: "The transaction feed: parsed swaps with direction, token and SOL value."
+          }
         ]
       }
     },
