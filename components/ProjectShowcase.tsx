@@ -130,6 +130,31 @@ const ProjectShowcase: React.FC<{ name: string; showcase: Showcase; onBack: () =
         </div>
       </section>
 
+      {/* Screens */}
+      {showcase.screens && showcase.screens.length > 0 && (
+        <section className="mb-20">
+          <h2 className="font-display text-3xl text-ink mb-8">Screens</h2>
+          <div className="space-y-10">
+            {showcase.screens.map((screen) => (
+              <figure key={screen.webp}>
+                <div className="rounded-xl overflow-hidden border border-line bg-term shadow-2xl shadow-ink/10">
+                  <picture>
+                    <source srcSet={screen.webp} type="image/webp" />
+                    <img
+                      src={screen.jpg}
+                      alt={screen.caption}
+                      loading="lazy"
+                      className="w-full block"
+                    />
+                  </picture>
+                </div>
+                <figcaption className="mt-3 text-sm text-muted">{screen.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Pipeline */}
       <section className="mb-20">
         <h2 className="font-display text-3xl text-ink mb-3">How the data moved</h2>

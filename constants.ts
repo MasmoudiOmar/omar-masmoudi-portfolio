@@ -194,6 +194,28 @@ export const RESUME: ResumeData = {
           { label: "Workers", detail: "Node.js workers fetch signatures in batches, parse transactions, and update prices." },
           { label: "Store", detail: "Parsed swaps land in PostgreSQL with full, auditable history; chat and content live in MongoDB." },
           { label: "AI layer", detail: "The agent queries that store through 20+ tools, with model fallback via OpenRouter." }
+        ],
+        screens: [
+          {
+            webp: "/media/solvizor/shot-chat.webp",
+            jpg: "/media/solvizor/shot-chat.jpg",
+            caption: "The agent answering a real question — wallet rankings, then a breakdown of one trader's pattern."
+          },
+          {
+            webp: "/media/solvizor/shot-feed.webp",
+            jpg: "/media/solvizor/shot-feed.jpg",
+            caption: "The Smart Feed — which tracked wallet moved, on what, for how much."
+          },
+          {
+            webp: "/media/solvizor/shot-wallets.webp",
+            jpg: "/media/solvizor/shot-wallets.jpg",
+            caption: "Wallet tracking — follow any Solana address and toggle alerts per wallet."
+          },
+          {
+            webp: "/media/solvizor/shot-missions.webp",
+            jpg: "/media/solvizor/shot-missions.jpg",
+            caption: "Missions and credits, the loop that drove signups and retention."
+          }
         ]
       }
     },
