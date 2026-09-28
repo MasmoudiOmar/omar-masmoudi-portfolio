@@ -197,24 +197,24 @@ export const RESUME: ResumeData = {
         ],
         screens: [
           {
+            webp: "/media/solvizor/shot-chat.webp",
+            jpg: "/media/solvizor/shot-chat.jpg",
+            caption: "The agent answering a real question — wallet rankings, then a breakdown of one trader's pattern."
+          },
+          {
             webp: "/media/solvizor/shot-feed.webp",
             jpg: "/media/solvizor/shot-feed.jpg",
-            caption: "The Smart Feed — parsed swaps as they land, priced in USD and SOL."
+            caption: "The Smart Feed: parsed swaps as they land, with buy/sell pressure across the sample."
           },
           {
             webp: "/media/solvizor/shot-wallets.webp",
             jpg: "/media/solvizor/shot-wallets.jpg",
-            caption: "Wallet tracking: follow any Solana address and toggle alerts per wallet."
+            caption: "Wallet tracking — follow any Solana address and toggle alerts per wallet."
           },
           {
             webp: "/media/solvizor/shot-missions.webp",
             jpg: "/media/solvizor/shot-missions.jpg",
-            caption: "Missions and credits — the loop that drove signups and retention."
-          },
-          {
-            webp: "/media/solvizor/shot-landing.webp",
-            jpg: "/media/solvizor/shot-landing.jpg",
-            caption: "The landing page — wallet-first onboarding, no email required."
+            caption: "Missions and credits, the loop that drove signups and retention."
           }
         ]
       }
