@@ -197,14 +197,24 @@ export const RESUME: ResumeData = {
         ],
         screens: [
           {
+            webp: "/media/solvizor/shot-feed.webp",
+            jpg: "/media/solvizor/shot-feed.jpg",
+            caption: "The Smart Feed — parsed swaps as they land, priced in USD and SOL."
+          },
+          {
+            webp: "/media/solvizor/shot-wallets.webp",
+            jpg: "/media/solvizor/shot-wallets.jpg",
+            caption: "Wallet tracking: follow any Solana address and toggle alerts per wallet."
+          },
+          {
+            webp: "/media/solvizor/shot-missions.webp",
+            jpg: "/media/solvizor/shot-missions.jpg",
+            caption: "Missions and credits — the loop that drove signups and retention."
+          },
+          {
             webp: "/media/solvizor/shot-landing.webp",
             jpg: "/media/solvizor/shot-landing.jpg",
             caption: "The landing page — wallet-first onboarding, no email required."
-          },
-          {
-            webp: "/media/solvizor/shot-transactions.webp",
-            jpg: "/media/solvizor/shot-transactions.jpg",
-            caption: "The transaction feed: parsed swaps with direction, token and SOL value."
           }
         ]
       }
