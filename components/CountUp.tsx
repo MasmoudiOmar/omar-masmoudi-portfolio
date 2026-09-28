@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 /**
  * Counts a figure up when it first scrolls into view.
  *
- * Takes the rendered string ("50M+", "5k+", "4+") and animates only the
+ * Takes the rendered string ("50M+", "5k+", "5+") and animates only the
  * numeric part, so suffixes and units survive untouched. Anyone who asked for
  * reduced motion just gets the final value.
  */

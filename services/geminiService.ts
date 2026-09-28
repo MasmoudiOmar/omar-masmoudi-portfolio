@@ -29,7 +29,7 @@ export const sendChatMessage = async (
     });
   } catch {
     return {
-      text: "I couldn't reach the assistant — please check your connection and try again.",
+      text: "I couldn't reach the assistant. Please check your connection and try again.",
       trace: [],
     };
   }

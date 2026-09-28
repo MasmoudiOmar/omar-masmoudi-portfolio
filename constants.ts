@@ -9,7 +9,9 @@ export const RESUME: ResumeData = {
     location: "Ariana, Tunisia",
     linkedin: "https://linkedin.com/in/omaar-masmoudi",
     github: "https://github.com/MasmoudiOmar",
-    summary: "Full Stack Software Engineer with 4+ years of experience architecting and shipping scalable web applications across the Education and Blockchain domains. Proficient in Next.js, Angular, React, Spring Boot, Node.js, and AI/ML integrations. Co-founder of two AI-powered products, comfortable owning systems end-to-end—from architecture and data pipelines to deployment and team leadership."
+    // Full-time from the AMI engineer role; the Feb 2021 internship precedes it.
+    careerStart: "2021-08",
+    summary: "Full Stack Software Engineer with 5+ years of experience architecting and shipping scalable web applications across the Education and Blockchain domains. Proficient in Next.js, Angular, React, Spring Boot, Node.js, and AI/ML integrations. Co-founder of two AI-powered products, comfortable owning systems end to end, from architecture and data pipelines through to deployment and team leadership."
   },
   experience: [
     {
@@ -31,7 +33,7 @@ export const RESUME: ResumeData = {
         "Architected an AI-powered chat interface with a model-orchestration layer on OpenRouter for automatic fallback, integrating 20+ wallet-analysis tools and enabling natural-language queries across portfolio analysis, PnL tracking, and token discovery for 5k+ active users.",
         "Engineered an asynchronous job-processing system using Redis queues and Node.js workers, cutting signature-fetching and transaction-parsing time by 95% versus the initial implementation and standard API call times, through fully async batch processing of blockchain historical data.",
         "Designed a data pipeline that transforms raw on-chain transactions into structured records, computing profit/loss across 50M+ token swaps while maintaining complete, auditable transaction history.",
-        "Owned frontend architecture end-to-end — shipped responsive chat and landing-page experiences with shadcn/ui and Tailwind CSS, improving page load time and conversion rate."
+        "Owned frontend architecture end to end, shipping responsive chat and landing-page experiences with shadcn/ui and Tailwind CSS, improving page load time and conversion rate."
       ]
     },
     {
@@ -140,7 +142,7 @@ export const RESUME: ResumeData = {
         slug: "solvizor",
         tagline: "Ask a question, get a wallet analysed.",
         overview: [
-          "Solvizor turned Solana wallet analysis into a conversation. Instead of reading block explorers, you asked a question in plain English and an AI agent picked the right tools to answer it — portfolio breakdowns, profit and loss across swaps, token discovery, whale tracking.",
+          "Solvizor turned Solana wallet analysis into a conversation. Instead of reading block explorers, you asked a question in plain English and an AI agent picked the right tools to answer it: portfolio breakdowns, profit and loss across swaps, token discovery, whale tracking.",
           "I co-founded it and owned the full stack: the ingestion pipeline that pulled and parsed on-chain history, the model-orchestration layer that routed questions to the right tools, and the frontend that made all of it feel immediate."
         ],
         role: "Full Stack Software Engineer & Co-Founder",
@@ -171,7 +173,7 @@ export const RESUME: ResumeData = {
           },
           {
             title: "Real-time whales feed",
-            description: "A live stream of large trades as they landed on-chain, each enriched with token metadata and USD value. This is the ingestion pipeline surfacing: raw signatures fetched in batches, parsed into structured swaps, and priced — all asynchronously, so the feed stayed responsive while history backfilled.",
+            description: "A live stream of large trades as they landed on-chain, each enriched with token metadata and USD value. This is the ingestion pipeline surfacing: raw signatures fetched in batches, parsed into structured swaps, and priced, all of it asynchronous so the feed stayed responsive while history backfilled.",
             media: {
               mp4: "/media/solvizor/feed.mp4",
               webm: "/media/solvizor/feed.webm",
@@ -199,17 +201,17 @@ export const RESUME: ResumeData = {
           {
             webp: "/media/solvizor/shot-chat.webp",
             jpg: "/media/solvizor/shot-chat.jpg",
-            caption: "The agent answering a real question — wallet rankings, then a breakdown of one trader's pattern."
+            caption: "The agent answering a real question. Wallet rankings first, then a breakdown of one trader's pattern."
           },
           {
             webp: "/media/solvizor/shot-feed.webp",
             jpg: "/media/solvizor/shot-feed.jpg",
-            caption: "The Smart Feed — which tracked wallet moved, on what, for how much."
+            caption: "The live feed. Every row names the trader, the token and the size, and carries the direction in the colour, the verb and the sign."
           },
           {
             webp: "/media/solvizor/shot-wallets.webp",
             jpg: "/media/solvizor/shot-wallets.jpg",
-            caption: "Wallet tracking — follow any Solana address and toggle alerts per wallet."
+            caption: "Wallet tracking. Follow any Solana address, see when it last traded and what it has been in, and switch alerts on or off per wallet."
           },
           {
             webp: "/media/solvizor/shot-missions.webp",
