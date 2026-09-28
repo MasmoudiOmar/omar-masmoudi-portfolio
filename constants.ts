@@ -204,12 +204,12 @@ export const RESUME: ResumeData = {
           {
             webp: "/media/solvizor/shot-feed.webp",
             jpg: "/media/solvizor/shot-feed.jpg",
-            caption: "The Smart Feed — which tracked wallet moved, on what, for how much."
+            caption: "The live feed — every row names the trader, the token and the size, with the direction carried in colour, the verb and the sign."
           },
           {
             webp: "/media/solvizor/shot-wallets.webp",
             jpg: "/media/solvizor/shot-wallets.jpg",
-            caption: "Wallet tracking — follow any Solana address and toggle alerts per wallet."
+            caption: "Wallet tracking — follow any Solana address, see when it last traded and what it has been in, and toggle alerts per wallet."
           },
           {
             webp: "/media/solvizor/shot-missions.webp",
