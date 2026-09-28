@@ -204,7 +204,7 @@ export const RESUME: ResumeData = {
           {
             webp: "/media/solvizor/shot-feed.webp",
             jpg: "/media/solvizor/shot-feed.jpg",
-            caption: "The Smart Feed: parsed swaps as they land, with buy/sell pressure across the sample."
+            caption: "The Smart Feed — which tracked wallet moved, on what, for how much."
           },
           {
             webp: "/media/solvizor/shot-wallets.webp",
