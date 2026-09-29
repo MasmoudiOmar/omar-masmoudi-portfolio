@@ -134,9 +134,9 @@ export const RESUME: ResumeData = {
       name: "Solvizor",
       description: "AI-powered crypto portfolio analysis with a natural-language chat interface over 20+ wallet-analysis tools.",
       preview: {
-        mp4: "/media/solvizor/chat.mp4",
-        webm: "/media/solvizor/chat.webm",
-        poster: "/media/solvizor/chat.jpg"
+        mp4: "/media/solvizor/landing.mp4",
+        webm: "/media/solvizor/landing.webm",
+        poster: "/media/solvizor/landing.jpg"
       },
       showcase: {
         slug: "solvizor",
