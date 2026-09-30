@@ -87,6 +87,12 @@ export interface ResumeData {
     linkedin: string;
     github: string;
     summary: string;
+    /**
+     * First month of full-time professional work, as YYYY-MM. The headline
+     * "years shipping" figure is derived from this rather than written out,
+     * so it cannot quietly go stale the way a hardcoded "4+" did.
+     */
+    careerStart: string;
   };
   experience: ExperienceItem[];
   education: EducationItem[];

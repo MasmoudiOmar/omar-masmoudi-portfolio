@@ -3,13 +3,23 @@ import { Mail, Linkedin, Github, ArrowDown, Download } from 'lucide-react';
 import { RESUME } from '../constants';
 import CountUp from './CountUp';
 
+/** Whole years between the first full-time role and today. */
+const yearsShipping = () => {
+  const [year, month] = RESUME.personal.careerStart.split('-').map(Number);
+  const start = new Date(year, month - 1);
+  const now = new Date();
+  const months =
+    (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+  return Math.floor(months / 12);
+};
+
 /** Headline figures, pulled from the resume so they can't drift out of sync. */
 const useHeadlineFacts = () => {
   const [current] = RESUME.experience;
   const cofounded = RESUME.experience.filter((role) => role.role.includes('Co-Founder')).length;
 
   return [
-    { value: '4+', label: 'Years shipping' },
+    { value: `${yearsShipping()}+`, label: 'Years shipping' },
     { value: String(cofounded), label: 'Products co-founded' },
     { value: '5k+', label: 'Users reached' },
     { value: '50M+', label: 'Records processed' },
@@ -54,7 +64,7 @@ const Hero: React.FC = () => {
           style={{ animationDelay: '0.1s' }}
         >
           <p className="text-xl md:text-2xl text-ink leading-snug mb-4">
-            I build software that holds up — and I measure whether it actually does.
+            I build software that holds up, and I measure whether it actually does.
           </p>
           <p className="text-base text-muted leading-relaxed">
             {personal.summary}
