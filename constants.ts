@@ -57,7 +57,8 @@ export const RESUME: ResumeData = {
         "Built interactive, responsive UI components with Angular Material, PrimeNG, and custom CSS animations for an enterprise learning platform serving 4k+ users.",
         "Delivered backend REST APIs with Spring Boot and MVC architecture, powering competency-based learning workflows across 20 modules.",
         "Designed adaptive learning algorithms that generate personalized, competency-based learning paths, improving completion rate by 25%.",
-        "Optimized advanced search using Spring Specification patterns for flexible, dynamic query filtering, reducing average query time by 40% across 1M+ records."
+        "Optimized advanced search using Spring Specification patterns for flexible, dynamic query filtering, reducing average query time by 40% across 1M+ records.",
+        "Provisioned and managed cloud infrastructure using Terraform alongside the infrastructure team, supporting deployment environments for the enterprise learning platform in parallel with primary frontend and backend development responsibilities."
       ]
     },
     {
@@ -126,7 +127,7 @@ export const RESUME: ResumeData = {
     },
     {
       category: "Platform",
-      skills: ["Docker", "Kubernetes", "AWS", "Cloudflare", "Vercel", "GitHub Actions"]
+      skills: ["Docker", "Kubernetes", "AWS", "Terraform", "Cloudflare", "Vercel", "GitHub Actions"]
     }
   ],
   projects: [
