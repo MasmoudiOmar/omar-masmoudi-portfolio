@@ -224,8 +224,13 @@ export const RESUME: ResumeData = {
     },
     {
       name: "Learna",
-      link: "https://reading-assistant-web.vercel.app",
-      description: "AI learning platform that auto-generates summaries and quizzes from PDFs, articles, and YouTube."
+      link: "https://learna-webapp.vercel.app",
+      description: "AI learning platform that auto-generates summaries and quizzes from PDFs, articles, and YouTube.",
+      preview: {
+        mp4: "/media/learna/theme.mp4",
+        webm: "/media/learna/theme.webm",
+        poster: "/media/learna/theme.jpg"
+      }
     }
   ]
 };
