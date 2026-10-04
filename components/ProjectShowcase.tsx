@@ -118,7 +118,7 @@ const ProjectShowcase: React.FC<{ name: string; showcase: Showcase; onBack: () =
 
       {/* Features, each with its clip */}
       <section className="mb-20">
-        <h2 className="font-display text-3xl text-ink mb-8">What it did</h2>
+        <h2 className="font-display text-3xl text-ink mb-8">{showcase.featuresTitle}</h2>
         <div className="space-y-16">
           {showcase.features.map((feature) => (
             <article key={feature.title}>
@@ -157,11 +157,8 @@ const ProjectShowcase: React.FC<{ name: string; showcase: Showcase; onBack: () =
 
       {/* Pipeline */}
       <section className="mb-20">
-        <h2 className="font-display text-3xl text-ink mb-3">How the data moved</h2>
-        <p className="text-muted mb-8 leading-relaxed">
-          Ingestion had to keep up with the chain without ever blocking a user's request, so every
-          stage between the chain and the UI was asynchronous.
-        </p>
+        <h2 className="font-display text-3xl text-ink mb-3">{showcase.pipelineTitle}</h2>
+        <p className="text-muted mb-8 leading-relaxed">{showcase.pipelineIntro}</p>
         <ol className="relative border-l-2 border-line ml-2 space-y-6">
           {showcase.pipeline.map((stage, index) => (
             <li key={stage.label} className="relative pl-8">

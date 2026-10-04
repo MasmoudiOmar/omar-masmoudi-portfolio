@@ -38,7 +38,6 @@ export const RESUME: ResumeData = {
     },
     {
       company: "Learna",
-      link: "https://reading-assistant-web.vercel.app",
       role: "Full Stack Software Engineer & Co-Founder",
       period: "May 2024 – Dec 2024",
       location: "Tunisia",
@@ -162,6 +161,7 @@ export const RESUME: ResumeData = {
           { value: "50M+", label: "Token swaps processed" },
           { value: "95%", label: "Faster transaction parsing" }
         ],
+        featuresTitle: "What it did",
         features: [
           {
             title: "Conversational wallet analysis",
@@ -173,8 +173,8 @@ export const RESUME: ResumeData = {
             }
           },
           {
-            title: "Real-time whales feed",
-            description: "A live stream of large trades as they landed on-chain, each enriched with token metadata and USD value. This is the ingestion pipeline surfacing: raw signatures fetched in batches, parsed into structured swaps, and priced, all of it asynchronous so the feed stayed responsive while history backfilled.",
+            title: "Live feed of whale trades",
+            description: "A live stream of large trades as they landed on-chain, each enriched with token metadata and USD value, with totals for the window on top and filters by type, token and size. This is the ingestion pipeline surfacing: raw signatures fetched in batches, parsed into structured swaps, and priced, all of it asynchronous so the feed stayed responsive while history backfilled.",
             media: {
               mp4: "/media/solvizor/feed.mp4",
               webm: "/media/solvizor/feed.webm",
@@ -191,6 +191,8 @@ export const RESUME: ResumeData = {
             }
           }
         ],
+        pipelineTitle: "How the data moved",
+        pipelineIntro: "Ingestion had to keep up with the chain without ever blocking a user's request, so every stage between the chain and the UI was asynchronous.",
         pipeline: [
           { label: "On-chain sources", detail: "Helius webhooks and RPC stream raw Solana signatures and transactions." },
           { label: "Queues", detail: "Redis and Kafka buffer the firehose so ingestion never blocks the request path." },
@@ -224,12 +226,125 @@ export const RESUME: ResumeData = {
     },
     {
       name: "Learna",
-      link: "https://learna-webapp.vercel.app",
-      description: "AI learning platform that auto-generates summaries and quizzes from PDFs, articles, and YouTube.",
+      description: "AI learning platform that turns articles, YouTube lectures, PDFs and notes into summaries and quizzes.",
       preview: {
         mp4: "/media/learna/theme.mp4",
         webm: "/media/learna/theme.webm",
         poster: "/media/learna/theme.jpg"
+      },
+      showcase: {
+        slug: "learna",
+        tagline: "Turn what you read into a quiz.",
+        overview: [
+          "Learna takes an article, a YouTube lecture, a PDF or your own notes and gives back a short summary and a set of questions about it. Learn mode keeps asking the ones you got wrong until you get them right, and a progress page shows how each topic is going.",
+          "I co-founded it in 2024 and led the frontend, including the Learn, Explore and quiz creator modules, on Next.js with Tailwind CSS, daisyUI and TanStack Query. It reached 100 users in its first month.",
+          "In 2026 I came back to it and rebuilt every screen on a new design system with light and dark themes. I also went through the API and closed the holes I found: private documents showed up in search and Explore, the generation routes had no session or credit check, the link importer could be pointed at internal addresses, and incoming webhooks were not verified."
+        ],
+        role: "Full Stack Software Engineer & Co-Founder",
+        period: "May 2024 – Dec 2024, rebuilt in 2026",
+        status: "The rebuilt version is not deployed yet, so there is no live link. Everything below is recorded from the app running locally with seeded demo data.",
+        stack: [
+          { group: "Frontend", items: ["Next.js 14", "React", "TypeScript", "Tailwind CSS", "daisyUI", "TanStack Query"] },
+          { group: "Backend", items: ["Next.js route handlers", "NextAuth", "Mongoose", "Zod"] },
+          { group: "Data", items: ["MongoDB"] },
+          { group: "AI", items: ["Gemini 2.5 Flash", "pdf2json", "Article extractor", "YouTube captions"] },
+          { group: "Services", items: ["Stripe", "Mailgun", "Vercel"] }
+        ],
+        metrics: [
+          { value: "100", label: "Users in the first month" },
+          { value: "4", label: "Ways to add material" },
+          { value: "5", label: "Questions per document" },
+          { value: "14", label: "Screens rebuilt in 2026" }
+        ],
+        featuresTitle: "What it does",
+        features: [
+          {
+            title: "Bring your own material",
+            description: "Paste a link to an article or a YouTube lecture, upload a PDF, or type your notes. Learna pulls the text out of whichever you gave it, and one model call returns a title, a summary, tags and five multiple-choice questions, each with the reasoning behind every answer.",
+            media: {
+              mp4: "/media/learna/create.mp4",
+              webm: "/media/learna/create.webm",
+              poster: "/media/learna/create.jpg"
+            }
+          },
+          {
+            title: "Quizzes that explain the answer",
+            description: "Answer with the mouse or the 1 to 4 keys. A wrong pick shows the right one and why it is right, and the results screen lists only the questions worth going over again.",
+            media: {
+              mp4: "/media/learna/quiz.mp4",
+              webm: "/media/learna/quiz.webm",
+              poster: "/media/learna/quiz.jpg"
+            }
+          },
+          {
+            title: "Learn mode",
+            description: "A missed question goes to the back of the queue and comes back until you get it right. The score only counts first tries, so a learn run and a normal quiz can be compared.",
+            media: {
+              mp4: "/media/learna/learn.mp4",
+              webm: "/media/learna/learn.webm",
+              poster: "/media/learna/learn.jpg"
+            }
+          },
+          {
+            title: "Progress you can read at a glance",
+            description: "Scores over time, the average for each topic, a year of study days, and every past quiz with a link back to its review.",
+            media: {
+              mp4: "/media/learna/progress.mp4",
+              webm: "/media/learna/progress.webm",
+              poster: "/media/learna/progress.jpg"
+            }
+          },
+          {
+            title: "Light and dark",
+            description: "Every colour comes from theme tokens, so dark mode is a second set of values rather than a second stylesheet. Switching uses the View Transitions API, so the new theme spreads out in a circle from the toggle instead of flashing.",
+            media: {
+              mp4: "/media/learna/theme.mp4",
+              webm: "/media/learna/theme.webm",
+              poster: "/media/learna/theme.jpg"
+            }
+          }
+        ],
+        pipelineTitle: "How a document gets made",
+        pipelineIntro: "Generation is the only step that costs money, so every request is checked before it reaches the model, and the input is capped so one request has a known cost.",
+        pipeline: [
+          { label: "Source", detail: "An article link, a YouTube link, a PDF up to 20 MB, or pasted text." },
+          { label: "Guard", detail: "The route checks the session and the credits left. A link is resolved first and refused if it points at a private or internal address, redirects included." },
+          { label: "Extract", detail: "Article text comes from the page, video text from its captions, PDF text from pdf2json. Anything past 60,000 characters is cut." },
+          { label: "Model", detail: "Gemini returns JSON with a title, summary, tags and questions. The reply is cleaned before parsing, since models do not always return valid JSON." },
+          { label: "Store", detail: "The document, its questions and its topic go to MongoDB. New documents are private until the owner shares them to Explore." }
+        ],
+        screens: [
+          {
+            webp: "/media/learna/shot-landing.webp",
+            jpg: "/media/learna/shot-landing.jpg",
+            caption: "The landing page. The hero is drawn with the app's own components rather than a screenshot, so it follows the theme."
+          },
+          {
+            webp: "/media/learna/shot-dashboard.webp",
+            jpg: "/media/learna/shot-dashboard.jpg",
+            caption: "The dashboard picks up where you left off, with your last document, your scores and recent quizzes."
+          },
+          {
+            webp: "/media/learna/shot-document.webp",
+            jpg: "/media/learna/shot-document.jpg",
+            caption: "A document: the summary set for reading, the quiz and learn mode on the side, and every past attempt."
+          },
+          {
+            webp: "/media/learna/shot-explore.webp",
+            jpg: "/media/learna/shot-explore.jpg",
+            caption: "Explore lists documents other people have shared. Saving one puts it, with its questions, in your library."
+          },
+          {
+            webp: "/media/learna/shot-learn.webp",
+            jpg: "/media/learna/shot-learn.jpg",
+            caption: "Learn groups documents by topic and tracks how many you have finished in each."
+          },
+          {
+            webp: "/media/learna/shot-progress-dark.webp",
+            jpg: "/media/learna/shot-progress-dark.jpg",
+            caption: "The progress page in the dark theme."
+          }
+        ]
       }
     }
   ]
