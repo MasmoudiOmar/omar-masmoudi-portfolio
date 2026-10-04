@@ -52,7 +52,12 @@ export interface ProjectShowcase {
   status: string;
   stack: { group: string; items: string[] }[];
   metrics: { value: string; label: string }[];
+  /** Heading over the features, e.g. "What it did" for a product that has wound down. */
+  featuresTitle: string;
   features: ShowcaseFeature[];
+  pipelineTitle: string;
+  /** One or two sentences on why the pipeline is shaped the way it is. */
+  pipelineIntro: string;
   /** Left-to-right stages of the data pipeline. */
   pipeline: ShowcaseStage[];
   /** Stills captured from the running app. */
